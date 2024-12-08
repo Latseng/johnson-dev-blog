@@ -1,0 +1,122 @@
+---
+
+---
+
+<header class="w-full fixed z-10 top-0 h-16 px-8 bg-slate-100 dark:bg-slate-800 dark:text-slate-200 shadow-md">
+	<nav class="h-full flex justify-between items-center">
+      <a href="/" class="flex items-center">
+        <span class="mx-2 text-xl">
+          江森的前端研究室
+        </span>
+      </a>
+		<!-- Desktop Navigation -->
+		<div class="hidden text-lg h-full md:w-1/4 md:flex md:justify-between md:items-center">
+			<a href="/" data-path="/" class="nav-link py-2 hover:border-b-4 hover:border-b-sky-300">首頁</a>
+			<a href="/blog" data-path="/blog" class="nav-link py-2 hover:border-b-4 hover:border-b-sky-300">文章</a>
+			<a href="/about" data-path="/about" class="nav-link py-2 hover:border-b-4 hover:border-b-sky-300">關於我</a>
+		</div>
+		
+		<!-- Mobile Menu Button -->
+     <button 
+      id="menu-button"
+      class="md:hidden rounded hover:bg-slate-300 dark:hover:bg-slate-500 "
+      aria-label="Open menu"
+      >
+			<!-- Menu Icon -->
+         <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
+           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+         </svg>
+				 <!-- Close Icon -->
+				 <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 hidden">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+</svg>
+     </button>
+		
+		<div class="hidden md:flex">
+			<a href="https://github.com/Latseng" target="_blank">
+				<svg viewBox="0 0 16 16" aria-hidden="true" width="24" height="24"
+					><path
+						fill="currentColor"
+						d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+					></path></svg
+				>
+			</a>
+		</div>
+	</nav>
+  
+	<!-- Mobile Sidebar -->
+			<div id="sidebar" class="fixed inset-y-0 top-16 right-0 w-1/2 border-t border-gray-400 bg-slate-100 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-600 translate-x-full transition-transform md:hidden p-4 flex flex-col items-center gap-4 shadow-xl">
+				<a href="/" data-path="/" class="side-nav-link w-full text-center p-2 rounded hover:bg-gray-300 hover:text-gray-700">首頁</a>
+			  <a href="/blog" data-path="/blog" class="side-nav-link w-full text-center p-2 rounded hover:bg-gray-300 hover:text-gray-700">Blog</a>
+			  <a href="/about" data-path="/about" class="side-nav-link w-full text-center p-2 rounded hover:bg-gray-300 hover:text-gray-700">關於</a>
+				<a href="https://github.com/Latseng" target="_blank">
+				<svg viewBox="0 0 16 16" aria-hidden="true" width="24" height="24"
+					><path
+						fill="currentColor"
+						d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+					></path></svg
+				>
+			</a>
+			</div>
+</header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuButton = document.getElementById('menu-button') as HTMLElement | null;
+    const menuIcon = document.getElementById('menu-icon') as HTMLElement | null;
+    const closeIcon = document.getElementById('close-icon') as HTMLElement | null;
+    const sidebar = document.getElementById('sidebar') as HTMLElement | null;
+		const navLinks = document.querySelectorAll('.nav-link')
+		const sideNavLinks = document.querySelectorAll('.side-nav-link')
+    const currentPath = window.location.pathname;
+
+		if (!menuButton || !menuIcon || !closeIcon || !sidebar) {
+      console.error("Missing required DOM elements. Please check the HTML structure.");
+      return;
+    }
+    let isSidebarOpen = false;
+
+    // 切換 Sidebar 狀態
+    const toggleSidebar = () => {
+      isSidebarOpen = !isSidebarOpen;
+      sidebar.style.transform = isSidebarOpen ? 'translateX(0)' : 'translateX(100%)';
+      menuIcon.classList.toggle('hidden', isSidebarOpen);
+      closeIcon.classList.toggle('hidden', !isSidebarOpen);
+      menuButton.setAttribute('aria-label', isSidebarOpen ? 'Close menu' : 'Open menu');
+    };
+
+    // 按下按鈕切換 Sidebar
+    menuButton.addEventListener('click', toggleSidebar);
+
+    // 點擊 Sidebar 外部關閉
+    window.addEventListener('click', (event) => {
+			const target = event.target as Node; 
+      if (isSidebarOpen && !sidebar.contains(target) && !menuButton.contains(target)) {
+        toggleSidebar();
+      }
+    });
+
+		// 高亮當前頁面導航標籤
+		function toggleHighlight(link: HTMLElement, isActive: boolean) {
+    if (isActive) {
+      link.classList.add('border-b-4', 'border-b-sky-300', 'font-bold');
+    } else {
+      link.classList.remove('border-b-2', 'border-b-sky-300', 'font-bold');
+    }
+  }
+
+	navLinks.forEach((link) => {
+    const navLink = link as HTMLElement
+    const linkPath = navLink.dataset.path || ""
+    const isActive = linkPath === '/' ? currentPath === '/' : currentPath.startsWith(linkPath);
+    toggleHighlight(navLink, isActive);
+  });
+
+	sideNavLinks.forEach((link) => {
+    const navLink = link as HTMLElement
+    const linkPath = navLink.dataset.path || "";
+    const isActive = linkPath === '/' ? currentPath === '/' : currentPath.startsWith(linkPath);
+    toggleHighlight(navLink, isActive);
+  });
+  });
+</script>
