@@ -1,7 +1,6 @@
 ---
 import Header from "../components/Header.astro";
 const { pageTitle } = Astro.props;
-import '../styles/global.css'
 ---
 
 <html lang="zh-Hant-TW">
@@ -12,7 +11,7 @@ import '../styles/global.css'
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
   </head>
-  <body>
+  <body class="dark:bg-blue-950 dark:text-gray-300">
     <Header />
     <main class="mt-20 mx-16">
       <slot />
