@@ -1,19 +1,11 @@
 ---
-import Header from "../components/Header.astro"
+import BaseLayout from "../layout/BaseLayout.astro"
+const pageTitle = "首頁";
 ---
 
-<html lang="zh-Hant-TW">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<Header />
+<BaseLayout pageTitle={pageTitle}>
 		<main>
 			<h1>My Astro Site</h1>
 		</main>
-	</body>
-</html>
+</BaseLayout>
+

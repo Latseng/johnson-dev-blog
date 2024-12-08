@@ -1,18 +1,10 @@
 ---
-import Header from "../components/Header.astro"
+import BaseLayout from "../layout/BaseLayout.astro"
+const pageTitle = "關於我";
 ---
 
-<html lang="zh-Hant-TW">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>關於我</title>
-	</head>
-	<body>
-		<Header />
-			<main class="mt-16">
+<BaseLayout pageTitle={pageTitle}>
+	<main class="mt-16">
 		<section class="w-full p-12 md:px-24">
 			<h1 class="text-center text-3xl md:text-5xl mb-4">關於江森</h1>
 			<hr class="my-8" />
@@ -21,5 +13,5 @@ import Header from "../components/Header.astro"
 	   </p>
 		</section>
 	</main>
-	</body>
-</html>
+</BaseLayout>
+
