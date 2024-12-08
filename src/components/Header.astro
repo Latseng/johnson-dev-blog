@@ -1,5 +1,5 @@
 ---
-
+import ThemeToggle from "./ThemeToggle.astro"
 ---
 
 <header class="w-full fixed z-10 top-0 h-16 px-8 bg-slate-100 dark:bg-slate-800 dark:text-slate-200 shadow-md">
@@ -16,6 +16,7 @@
       <a href="/tags" data-path="/tags" class="nav-link py-2 hover:border-b-4 hover:border-b-sky-300">標籤</a>
 			<a href="/about" data-path="/about" class="nav-link py-2 hover:border-b-4 hover:border-b-sky-300">關於我</a>
 		</div>
+    <ThemeToggle />
 		
 		<!-- Mobile Menu Button -->
      <button 
