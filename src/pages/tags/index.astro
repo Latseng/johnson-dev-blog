@@ -8,27 +8,8 @@ const pageTitle = "標籤目錄";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h1 class="text-4xl">文章標籤</h1>
-  <div class="tags">
-    {tags.map((tag) =><p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>)}
+  <h1 class="text-3xl md:text-4xl">文章標籤</h1>
+  <div class="flex flex-wrap">
+    {tags.map((tag) =><p class="m-2 p-1 bg-slate-50 border border-dotted border-gray-400 rounded-md mx-2"><a class="text-sky-700" href={`/tags/${tag}`}>{tag}</a></p>)}
   </div>
 </BaseLayout>
-<style>
-  a {
-    color: #00539F;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .tag {
-    margin: 1em;
-    border: dotted 1px #a1a1a1;
-    border-radius: .5em;
-    padding: .5em 1em;
-    font-size: 1.15em;
-    background-color: #F8FCFD;
-  }
-</style>

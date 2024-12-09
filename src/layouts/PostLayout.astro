@@ -4,10 +4,10 @@ const { frontmatter } = Astro.props;
 ---
 <BaseLayout pageTitle={frontmatter.title}>
     <article>
-      <h1 class="text-center">{frontmatter.title}</h1>
+      <h1 class="text-center text-3xl md:text-5xl">{frontmatter.title}</h1>
       <div class="flex flex-wrap justify-center">
       {frontmatter.tags.map((tag: string) => (
-        <p class="tag p-2 bg-slate-50 border border-dotted border-gray-400 rounded-md mx-2"><a class="text-blue-800" href={`/tags/${tag}`}>{tag}</a></p>
+        <p class="p-2 bg-slate-50 border border-dotted border-gray-400 rounded-md mx-2"><a class="text-sky-700" href={`/tags/${tag}`}>{tag}</a></p>
       ))}
       </div>
       <p class="text-center text-lg"><em>{frontmatter.description}</em></p>
