@@ -1,14 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro"
-import { Image } from 'astro:assets';
-import aboutMeImage from '../images/about-me.jpeg'
+import { CldImage } from 'astro-cloudinary';
 const pageTitle = "關於我";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-		<section class="w-full p-4 md:px-20">
+		<section class="w-full p-12 md:px-24">
 			<h1 class="text-center text-3xl md:text-5xl mb-4">關於江森</h1>
-			<Image class="mx-auto rounded-full" width="360" src={aboutMeImage} alt="about me" />
+			<CldImage class="rounded-full mx-auto" src="about-me_c7hkp2" width="360" height="480" alt="about me" />
 			<hr class="my-8" />
 			<p class="px-12">
 				專注在前端的前戰術執法人員。喜歡鑽研知識技術，後來發覺到看得多忘得也多，因此開始嘗試利用部落格來保存記憶，卻不小心踏入網頁開發的領域。
