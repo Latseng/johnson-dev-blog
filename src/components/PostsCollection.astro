@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<section class="w-full p-12 md:px-24">
+				<ul class="grid grid-cols-1 gap-4 md:grid md:grid-cols-2">
+					{
+						posts.map((post, index) => (
+							<li class="first:mb-4 first:text-xl first:text-center md:first:col-span-2 group hover:text-blue-400 hover:translate-y-[-4px] transition-all duration-200 dark:bg-gray-200 dark:text-black rounded-xl">
+								<a class="block rounded-xl" href={`/posts/${post.id}/`}>
+								<div class="relative h-48 md:h-72 border-2 rounded-2xl">
+									<img class="absolute w-full h-full rounded-2xl object-cover mb-2  group-hover:shadow-2xl" src={post.data.image.url} alt="cover picture" />
+								</div>
+								<div class="p-2">
+									<h4 class={index === 0 ? "text-4xl" : ""}>{post.data.title}</h4>
+									<p class="text-gray-500">
+										{post.data.pubDate.toLocaleDateString()}
+									</p>
+								</div>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</section>
