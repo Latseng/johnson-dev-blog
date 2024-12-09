@@ -4,7 +4,7 @@ author: Astro Learner
 description: 'Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.'
 pubDate: 2024-06-19
 image:
-    url: 'https://docs.astro.build/assets/rose.webp'
+    url: '/public/blog-placeholder-1.jpg'
     alt: 'cover picture'
 tags: ["astro", "blogging", "learning in public"]
 ---

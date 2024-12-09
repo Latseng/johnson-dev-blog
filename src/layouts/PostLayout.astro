@@ -13,9 +13,9 @@ const { frontmatter } = Astro.props;
       <p class="text-center text-lg"><em>{frontmatter.description}</em></p>
       <div class="my-2 text-center">
          <span class="mx-2 text-gray-400 text-sm">{frontmatter.pubDate.toLocaleDateString()}</span>
-         <span class="mx-2">{frontmatter.author}</span>
+         <span class="mx-2 text-base">{frontmatter.author}</span>
       </div>
-      <img class="mx-auto" src={frontmatter.image.url} width="560" alt={frontmatter.image.alt} />
+      <img class="mx-auto" src={frontmatter.image.url} width="640" alt={frontmatter.image.alt} />
       <div class="my-4 p-8">
         <slot />
       </div>
