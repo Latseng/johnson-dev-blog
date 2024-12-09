@@ -1,0 +1,8 @@
+---
+const {url, title, date} = Astro.props;
+---
+
+<li class="flex justify-between items-center border border-slate-200 my-4 py-4 px-8 rounded-md hover:border-2 hover:border-blue-300 hover:bg-slate-50 transition-all duration-200 cursor-pointer">
+  <a href={url}>{title}</a>
+  <span class="text-base text-gray-600">{date}</span>
+</li>
