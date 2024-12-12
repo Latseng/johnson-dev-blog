@@ -1,5 +1,5 @@
 ---
-title: 'Markdown撰寫範例'
+title: 'Markdown in Astro 範例'
 author: Astro Learner
 description: 'Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.'
 pubDate: 2024-06-19
