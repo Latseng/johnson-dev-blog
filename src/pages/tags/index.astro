@@ -10,6 +10,6 @@ const pageTitle = "標籤目錄";
 <BaseLayout pageTitle={pageTitle}>
   <h1 class="text-3xl md:text-4xl">文章標籤</h1>
   <div class="flex flex-wrap">
-    {tags.map((tag) =><p class="m-2 p-1 bg-slate-50 border border-dotted border-gray-400 rounded-md mx-2"><a class="text-sky-700" href={`/tags/${tag}`}>{tag}</a></p>)}
+    {tags.map((tag) =><p class="m-2 p-2 bg-slate-50 border border-gray-300 rounded-md mx-2"><a class="text-sky-700" href={`/tags/${tag}`}>{tag}</a></p>)}
   </div>
 </BaseLayout>

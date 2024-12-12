@@ -2,7 +2,7 @@
 const {url, title, date} = Astro.props;
 ---
 
-<li class="flex justify-between items-center border border-slate-200 my-4 p-4 rounded-md hover:border-2 hover:border-blue-300 hover:bg-slate-50 transition-all duration-200 cursor-pointer">
-  <a class=" text-sm md:text-xl" href={url}>{title}</a>
-  <span class="text-xs ml-8 md:text-base text-gray-600">{date}</span>
+<li class="my-4 p-4">
+  <span class="mr-8 md:text-base text-gray-400">{date}</span>
+  <a class="hover:text-sky-600 transition-colors duration-200 text-sm md:text-xl" href={url}>{title}</a>
 </li>

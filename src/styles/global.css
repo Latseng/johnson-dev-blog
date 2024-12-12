@@ -35,7 +35,35 @@ strong,
 b {
 	font-weight: 700;
 }
+.posts-content table {
+	width: 100%;
+	margin: 24px 0 ;
+	text-align: center;
+}
 
+.posts-content ul  {
+	margin: 24px 32px;
+}
+.posts-content ul li {
+  list-style-type: disc;
+}
+.posts-content ul li li {
+  list-style-type: circle;
+}
+.posts-content ul li li li {
+  list-style-type: square;
+}
+
+.posts-content ol  {
+  list-style-type: decimal;
+	margin: 24px 32px;
+}
+.posts-content li {
+	 font-size: 16px;
+}
+.posts-content a {
+	color:#174eb6
+}
 code {
 	padding: 4px;
 	background-color: rgb(89, 88, 88);
@@ -52,7 +80,7 @@ pre > code {
 	all: unset;
 }
 blockquote {
-	border-left: 4px solid var(--accent);
+	border-left: 4px solid #2337ff;
 	padding: 0 0 0 20px;
 	margin: 24px 0px;
 	font-size: 1.333em;

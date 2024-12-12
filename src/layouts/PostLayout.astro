@@ -5,18 +5,19 @@ const { frontmatter } = Astro.props;
 <BaseLayout pageTitle={frontmatter.title}>
     <article>
       <h1 class="text-center text-3xl md:text-5xl">{frontmatter.title}</h1>
-      <div class="flex flex-wrap justify-center">
-      {frontmatter.tags.map((tag: string) => (
-        <p class="p-2 bg-slate-50 border border-dotted border-gray-400 rounded-md mx-2"><a class="text-sky-700" href={`/tags/${tag}`}>{tag}</a></p>
-      ))}
-      </div>
-      <p class="text-center text-lg"><em>{frontmatter.description}</em></p>
+      <p class="text-center text-sm md:text-lg mx-8"><em>{frontmatter.description}</em></p>
       <div class="my-2 text-center">
          <span class="mx-2 text-gray-400 text-sm">{frontmatter.pubDate.toLocaleDateString()}</span>
          <span class="mx-2 text-base">{frontmatter.author}</span>
       </div>
-      <img class="mx-auto" src={frontmatter.image.url} width="640" alt={frontmatter.image.alt} />
-      <div class="my-4 p-8">
+      <img class="mx-auto w-5/6" src={frontmatter.image.url} alt={frontmatter.image.alt} />
+      <div class="flex justify-center my-4">
+      {frontmatter.tags.map((tag: string) => (
+        <p class="p-2 text-sm bg-slate-50 border border-gray-300 rounded-md mx-2"><a class="text-sky-600" href={`/tags/${tag}`}>{tag}</a></p>
+      ))}
+      </div>
+      <hr class="m-4" />
+      <div class="posts-content my-4 p-8">
         <slot />
       </div>
     </article>
