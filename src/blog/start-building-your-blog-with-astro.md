@@ -6,7 +6,7 @@ author: 江森
 image:
   url: "/start-building-your-web-with-astro.jpg"
   alt: "Cover Picture"
-tags: ["Front-end", "Astro"]
+tags: ["Front-end", "Astro", "Blog"]
 ---
 
 ## 前言
@@ -109,7 +109,7 @@ npm create astro@latest
 
 親身體驗一下 Astro 的魅力吧！
 
-### 參考資料：
+## 參考資料：
 
 > Astro 官網文件：
 > https://docs.astro.build/en/getting-started/
