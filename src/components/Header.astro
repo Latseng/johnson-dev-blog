@@ -1,8 +1,9 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro"
+import { LINKS } from "@consts";
 ---
 
-<header class="w-full fixed z-10 top-0 h-16 px-2 md:px-8 bg-slate-100 dark:bg-slate-800 dark:text-slate-200 shadow-md">
+<header id="header" class="w-full fixed z-10 top-0 h-16 px-2 md:px-8">
 	<nav class="h-full flex justify-between items-center">
       <a href="/" class="flex items-center mx-2 md:mx-0">
         <img class="w-4 md:w-8" src="/my-logo.png" alt="my-logo">
@@ -12,10 +13,9 @@ import ThemeToggle from "./ThemeToggle.astro"
       </a>
 		<!-- Desktop Navigation -->
 		<div class="hidden text-lg h-full md:w-1/3 md:flex md:justify-between md:items-center">
-			<a href="/" data-path="/" class="nav-link py-2 hover:border-b-4 hover:border-b-sky-300">首頁</a>
-			<a href="/posts" data-path="/posts" class="nav-link py-2 hover:border-b-4 hover:border-b-sky-300">文章</a>
-      <a href="/tags" data-path="/tags" class="nav-link py-2 hover:border-b-4 hover:border-b-sky-300">標籤</a>
-			<a href="/about" data-path="/about" class="nav-link py-2 hover:border-b-4 hover:border-b-sky-300">關於我</a>
+      {LINKS.map((LINK) => (
+        <a href={LINK.HREF} data-path={LINK.HREF} class="nav-link py-2 hover:border-b-4 hover:border-b-sky-300">{LINK.TEXT}</a>
+      ))}
 		</div>
     <ThemeToggle />
 		
@@ -47,12 +47,10 @@ import ThemeToggle from "./ThemeToggle.astro"
 		</div>
 	</nav>
 	<!-- Mobile Sidebar -->
-			<div id="sidebar" class="fixed inset-y-0 top-16 right-0 w-1/2 border-t border-gray-400 bg-slate-100 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-600 translate-x-full transition-transform md:hidden p-4 flex flex-col items-center gap-4 shadow-xl">
-				<a href="/" data-path="/" class="side-nav-link w-full text-center p-2 rounded hover:bg-gray-300 hover:text-gray-700">首頁</a>
-			  <a href="/posts" data-path="/posts" class="side-nav-link w-full text-center p-2 rounded hover:bg-gray-300 hover:text-gray-700">文章</a>
-        <a href="/tags" data-path="/tags" class="side-nav-link w-full text-center p-2 rounded hover:bg-gray-300 hover:text-gray-700">標籤</a>
-			  <a href="/about" data-path="/about" class="side-nav-link w-full text-center p-2 rounded hover:bg-gray-300 hover:text-gray-700">關於我</a>
-				<a href="https://github.com/Latseng" target="_blank">
+			<div id="sidebar" class="fixed inset-y-0 top-16 right-0 w-1/2 translate-x-full border-t bg-white/75 dark:bg-black/50 backdrop-blur-sm saturate-200 transition-transform md:hidden p-4 flex flex-col items-center gap-4 shadow-xl">
+        {LINKS.map((LINK) => (
+          <a href={LINK.HREF} data-path={LINK.HREF} class="side-nav-link w-full text-center p-2 rounded hover:bg-gray-300 hover:text-gray-700">{LINK.TEXT}</a>
+        ))}
 				<svg viewBox="0 0 16 16" aria-hidden="true" width="24" height="24"
 					><path
 						fill="currentColor"
@@ -122,4 +120,17 @@ import ThemeToggle from "./ThemeToggle.astro"
     toggleHighlight(navLink, isActive);
   });
   });
+
+  function onScroll() {
+  const header: HTMLElement | null = document.getElementById("header")
+  if (header) { 
+  if (window.scrollY > 0) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+}
+}
+
+document.addEventListener("scroll", onScroll)
 </script>

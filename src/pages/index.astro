@@ -1,15 +1,58 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro"
 import PostsCollection from "../components/PostsCollection.astro";
+import TwinklingStars from "@components/TwinklingStars.astro";
+import MeteorShower from "@components/MeteorShower.astro";
 const pageTitle = "首頁";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h1 class="flex justify-center  text-2xl md:text-5xl text-gray-800">
-    <span class="animate-fadeIn p-2 bg-slate-300 dark:text-slate-100 dark:bg-slate-500 rounded-lg">前端</span>
-    <span class="mx-4 animate-fadeIn delay-2000 p-2 dark:text-slate-100 dark:bg-slate-500 bg-slate-300 rounded-lg">網頁開發</span>
-    <span class="animate-fadeIn delay-3000 p-2 dark:text-slate-100 dark:bg-slate-500 bg-slate-300 rounded-lg">技術鑽研雜感</span>
-  </h1>
-  <h2 class="text-center text-4xl mt-10">最新文章</h2>
-  <PostsCollection />
+   <!-- Light Mode: Particles -->
+  <div class='absolute inset-0 block dark:hidden'>
+    <div id='particles1' class='fixed inset-0'></div>
+    <div id='particles2' class='fixed inset-0'></div>
+    <div id='particles3' class='fixed inset-0'></div>
+  </div>
+
+  <!-- Dark Theme: Stars -->
+  <div class='absolute inset-0 bg-black hidden dark:block'>
+    <div id='stars1' class='fixed inset-0'></div>
+    <div id='stars2' class='fixed inset-0'></div>
+    <div id='stars3' class='fixed inset-0'></div>
+  </div>
+
+   <!-- Dark Theme: Twinkling Stars / Metors -->
+  <div id="galaxy" class="fixed inset-0">
+    <div class="hidden dark:block">
+      <TwinklingStars />
+      <MeteorShower />
+    </div>
+  </div>
+
+  <script is:inline src="/js/bg.js"></script>
+
+  <section class="relative h-screen w-full">
+    <div id="planetcont" class='animate absolute inset-0 top-1/4 overflow-hidden'>
+      <div id="crescent" class='absolute top-0 left-1/2 -translate-x-1/2 w-[250vw] min-h-[100vh] aspect-square rounded-full p-[1px] bg-gradient-to-b from-black/25 dark:from-white/75 from-0% to-transparent to-5%'>
+        <div id="planet" class='w-full h-full bg-white dark:bg-black rounded-full p-[1px] overflow-hidden flex justify-center'>
+          <div id="blur" class='w-full h-20 rounded-full bg-neutral-900/25 dark:bg-white/25 blur-3xl'/>
+        </div>
+      </div>
+    </div>
+    <div class="animate absolute h-full w-full flex items-center justify-center">
+      <div class='relative w-full h-full flex items-center justify-center'>
+         <div class="text-2xl md:text-5xl">
+    <span class="animate-fadeIn p-2 rounded-lg border">前端</span>
+    <span class="animate-fadeIn delay-2000 p-2  rounded-lg border">網頁開發</span>
+    <span class="animate-fadeIn delay-3000 p-2  rounded-lg border">技術鑽研雜感</span>
+    </div>
+      </div>
+    </div>
+    <div class="animate absolute top-96 p-4 md:mx-32">
+      <h2 class="text-center text-3xl md:text-4xl my-8">最新文章</h2>
+      <PostsCollection />
+    </div>
+  </section>
+  
+  
 </BaseLayout>

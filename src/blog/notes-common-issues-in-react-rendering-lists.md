@@ -1,5 +1,5 @@
 ---
-title: "【前端筆記】React在rendering lists常踩到的雷"
+title: "【React筆記】在rendering lists常踩到的雷"
 author: 江森
 description: "React筆記、心得、踩雷經驗談"
 pubDate: 2024-11-11

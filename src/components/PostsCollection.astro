@@ -5,12 +5,10 @@ const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
-
-<section class="w-full p-4 md:px-12">
 				<ul class="grid grid-cols-1 gap-4 md:grid md:grid-cols-2">
 					{
 						posts.map((post, index) => (
-							<li class="first:mb-4 first:text-xl first:text-center border border-gray-200 md:first:col-span-2 group hover:text-blue-400 hover:translate-y-[-4px] transition-all duration-200 dark:bg-gray-200 dark:text-black rounded-xl">
+							<li class="first:mb-4 first:text-xl first:text-center  md:first:col-span-2 group hover:text-blue-400 hover:translate-y-[-4px] transition-all duration-200  rounded-xl">
 								<a class="block rounded-xl" href={`/posts/${post.id}/`}>
 								<div class={index === 0 ? "relative h-48 md:h-96 border-2 rounded-2xl" : "relative h-48 border-2 rounded-2xl"}>
 									<img class="absolute w-full h-full rounded-2xl  mb-2  group-hover:shadow-2xl" src={post.data.image.url} alt="cover picture" />
@@ -26,4 +24,3 @@ const posts = (await getCollection('blog')).sort(
 						))
 					}
 				</ul>
-			</section>

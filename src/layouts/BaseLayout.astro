@@ -2,19 +2,22 @@
 import Header from "../components/Header.astro";
 const { pageTitle } = Astro.props;
 import "../styles/global.css"
+import { SITE } from "@consts"
 ---
 
 <html lang="zh-Hant-TW">
   <head>
     <meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="favicon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
+    <meta name="description" content={SITE.DESCRIPTION} />
+    <script is:inline src="/js/animate.js"></script>
+		<title>{`${pageTitle} | ${SITE.TITLE}`}</title>
   </head>
-  <body class="dark:bg-blue-950 dark:text-gray-300">
+  <body class="dark:bg-black dark:text-white/75 text-black/75">
     <Header />
-    <main class="mt-20 md:mx-16">
+    <main class="animate">
       <slot />
     </main>
   </body>
