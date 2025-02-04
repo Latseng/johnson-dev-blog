@@ -31,26 +31,25 @@ const pageTitle = "首頁";
 
   <script is:inline src="/js/bg.js"></script>
 
-  <section class="relative h-screen w-full">
-    <div id="planetcont" class='animate absolute inset-0 top-1/4 overflow-hidden'>
+  <div class="relative h-screen w-full">
+    <div class="text-xl text-center md:text-4xl mt-28 font-bold">
+      <span class="p-2 text-white bg-gradient-to-r from-slate-400 to-slate-800 rounded-lg ">前端</span>
+      <span class="p-2 text-white bg-gradient-to-r from-slate-400 to-slate-800 rounded-lg ">網頁開發</span>
+      <span class="p-2 text-white bg-gradient-to-r from-slate-400 to-slate-800 rounded-lg ">技術鑽研雜感</span>
+    </div>
+    <div id="planetcont" class='animate absolute inset-0 top-20 md:top-28 overflow-hidden'>
       <div id="crescent" class='absolute top-0 left-1/2 -translate-x-1/2 w-[250vw] min-h-[100vh] aspect-square rounded-full p-[1px] bg-gradient-to-b from-black/25 dark:from-white/75 from-0% to-transparent to-5%'>
-        <div id="planet" class='w-full h-full bg-white dark:bg-black rounded-full p-[1px] overflow-hidden flex justify-center'>
+          <div id="planet" class='w-full h-full bg-white dark:bg-black rounded-full p-[1px] overflow-hidden flex justify-center'>
           <div id="blur" class='w-full h-20 rounded-full bg-neutral-900/25 dark:bg-white/25 blur-3xl'/>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="animate absolute h-full w-full flex items-center justify-center">
-      <div class='relative w-full h-full flex items-center justify-center'>
-         <div class="text-2xl md:text-5xl">
-    <span class="animate-fadeIn p-2 rounded-lg border">前端</span>
-    <span class="animate-fadeIn delay-2000 p-2  rounded-lg border">網頁開發</span>
-    <span class="animate-fadeIn delay-3000 p-2  rounded-lg border">技術鑽研雜感</span>
-    </div>
+      <div class="animate absolute top-32 md:top-44 p-4 sm:p-16  md:p-20 w-full mx-auto">
+        <h2 class="text-center text-3xl md:text-4xl my-8 font-bold">
+          最新文章
+        </h2>
+        <PostsCollection />
       </div>
-    </div>
-    <div class="animate absolute top-96 p-4 md:mx-32">
-      <h2 class="text-center text-3xl md:text-4xl my-8">最新文章</h2>
-      <PostsCollection />
     </div>
   </section>
   

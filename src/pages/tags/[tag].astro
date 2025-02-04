@@ -24,8 +24,8 @@ const { posts } = Astro.props;
 <BaseLayout pageTitle={tag}>
   <section class="mt-16 md:p-12 p-8">
     <h1 class="text-4xl">{tag}</h1>
-  <ul>
-    {posts.map((post: any) => <PostsList url={`/posts/${post.id}/`} title={post.data.title}/>)}
-  </ul>
+      <ul>
+        {posts.map((post: any) => <PostsList url={`/posts/${post.id}/`} title={post.data.title}/>)}
+      </ul>
   </section>
 </BaseLayout>

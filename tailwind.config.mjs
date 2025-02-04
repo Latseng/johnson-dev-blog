@@ -13,13 +13,8 @@ export default {
       animation: {
         twinkle: "twinkle 2s ease-in-out forwards",
         meteor: "meteor 3s ease-in-out forwards",
-        fadeIn: "fadeIn 1s ease-in-out",
       },
       keyframes: {
-        fadeIn: {
-          "0%": { opacity: 0, transform: "translateY(-20px)" },
-          "100%": { opacity: 1, transform: "translateY(0)" },
-        },
         twinkle: {
           "0%": {
             opacity: 0,
@@ -50,5 +45,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography"),],
 };

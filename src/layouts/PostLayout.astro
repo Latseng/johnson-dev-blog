@@ -3,15 +3,15 @@ import BaseLayout from "./BaseLayout.astro";
 const { frontmatter } = Astro.props;
 ---
 <BaseLayout pageTitle={frontmatter.title}>
-    <article class="w-full p-4 mt-16">
-      <h1 class="text-center text-3xl md:text-5xl">{frontmatter.title}</h1>
-      <p class="text-center text-sm md:text-lg mx-8"><em>{frontmatter.description}</em></p>
-      <div class="my-2 text-center">
+    <article class="prose dark:prose-invert lg:prose-xl mt-24 mx-auto">
+      <h1>{frontmatter.title}</h1>
+      <p class="text-center"><em>{frontmatter.description}</em></p>
+      <div class="text-center">
          <span class="mx-2 text-gray-400 text-sm">{frontmatter.pubDate.toLocaleDateString()}</span>
          <span class="mx-2 text-base">{frontmatter.author}</span>
       </div>
       <img class="mx-auto w-5/6" src={frontmatter.image.url} alt={frontmatter.image.alt} />
-      <div class="flex justify-center my-4">
+      <div class="flex justify-center">
       {frontmatter.tags.map((tag: string) => (
         <p class="flex items-center p-2 text-sm bg-slate-50 border border-gray-300 rounded-md mx-2">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 mr-2 text-sky-600">
@@ -22,8 +22,8 @@ const { frontmatter } = Astro.props;
         </p>
       ))}
       </div>
-      <hr class="m-4" />
-      <div class="posts-content my-4 p-8">
+      <hr />
+      <div class="">
         <slot />
       </div>
     </article>

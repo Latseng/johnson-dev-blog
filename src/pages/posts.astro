@@ -21,12 +21,12 @@ const pageTitle = "文章";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <section class="mt-16 md:mx-12 md:p-8 p-4">
-      <h2 class="text-xl md:text-2xl">分類標籤</h2>
-      <div class="flex flex-wrap p-4">
+    <section class="mt-20 md:mx-12 md:p-8 p-4">
+      <h2 class="text-xl md:text-2xl font-bold">標籤</h2>
+      <div class="flex flex-wrap gap-4 p-4">
         {tags.map((tag) =>
         (
-        <a class="text-sky-700 flex items-center rounded-md border p-4 m-4" href={`/tags/${tag}`}>
+        <a class="text-sky-700 dark:text-sky-500 text-base flex items-center rounded-md border px-4 py-2 hover:bg-sky-200" href={`/tags/${tag}`}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 mr-2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z" />
@@ -36,7 +36,7 @@ const pageTitle = "文章";
   </div>
    </section>
     <section class="md:mx-12 md:p-8 p-4">
-        <h2 class="text-xl md:text-2xl">文章列表</h2>
+        <h2 class="text-xl md:text-2xl font-bold">文章列表</h2>
         <ul class="md:mx-8">
             {allPostsForList.map((post: any) => <PostsList url={`/posts/${post.id}/`} title={post.data.title} date={post.data.pubDate.toLocaleDateString()} />)}
         </ul>
