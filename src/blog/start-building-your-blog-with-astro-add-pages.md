@@ -29,7 +29,7 @@ http://localhost:4321/about
 
 當頁面逐漸增加之後，我們會透過建立 layout，讓使用相同佈局結構的頁面，套用同一個 layout 來減少重複的 HTML elements。
 
-這樣看來.astro 檔案跟 HTML 沒什麼兩樣嘛～你也許會這樣想，但當然沒這麼簡單啦！如果只是建 立HTML，那特地找來一個框架，未免也太過大費周章。
+這樣看來.astro 檔案跟 HTML 沒什麼兩樣嘛～你也許會這樣想，但當然沒這麼簡單啦！如果只是建立HTML，那特地找來一個框架，未免也太過大費周章。
 
 Astro 當然有它特殊的語法，但別擔心，你很快就能熟悉它語法的基本運作方式。
 
@@ -46,11 +46,10 @@ Astro 當然有它特殊的語法，但別擔心，你很快就能熟悉它語�
 
 這樣上下兩層的「---」符號，稱作frontmatter，我們可以在其中宣告變數，然後插入到下方的 HTML 語法當中，就像這樣：
 
-```
+```javascript
 ---
 const name = "Astro";
 ---
-
 <h1>This is my first {name} blog</h1>
 ```
 
@@ -66,7 +65,7 @@ const name = "Astro";
 
 然後在這支檔案中，新增以下內容：
 
-```
+```javascript
 <body>
   <a href="/">首頁</a>
   <h1>關於我</h1>
@@ -80,16 +79,82 @@ const name = "Astro";
 
 你可以自行練習，加入這個大多數部落格都會有的文章頁面，或是直接複製我放在下方的範例HTML，之後，我分享該如何編輯文章匯集的頁面。
 
-```
+```javascript
 <body>
   <a href="/">首頁</a>
   <a href="/about/">關於我</a>
-
   <h1>文章</h1>
   <p>這裡是本站的文章匯集</p>
 </body>
 
 ```
+
+## 添加樣式
+
+如果你不是新手，已經自有一套方法，就可以跳過以下的解說，但如果你才剛入門HTML與CSS，又剛接觸Astro框架，可以看看接下來要介紹的樣式添加方式。
+
+樣式建構，是前端開發非常重要的一環。
+
+每一位前端開發者都有自己習慣的實作方式，像我現在對Tailwind CSS愛不釋手。
+
+我想幾乎每一位接觸過HTML與CSS的開發者，在初次嘗試CSS時，常規做法是另外寫一個.css檔案後，在HTML檔案中引入使用。
+
+在Astro專案中，原則上也是這麼做，不過那是以全域樣式來說。
+
+什麼是全域樣式呢？簡單來說，就是全部站通用的樣式，像是專案當中，重複使用的Button，它們在每個頁面的每一個地方，長相都一樣時，我們就會採用全域方式來定義它樣式，這樣一來，我只要在一個地方就可以修改全部的Button了！
+
+而相對於全域的局部樣式來說，則是在.astro檔案中，直接使用<style>標籤來設定樣式。
+
+### 局部樣式
+
+就像這樣：
+
+``` javascript
+<body>
+  <a href="/">首頁</a>
+  <a href="/about/">關於我</a>
+  <h1 class="title">文章</h1>
+  <p>這裡是本站的文章匯集</p>
+</body>
+
+<style>
+      .title {
+        color: blue;
+        font-size: 4rem;
+      }
+  </style>
+
+```
+### 全域樣式
+
+你可以在路徑：src/styles/global.css，編寫好CSS樣式後，在你想使用的頁面中引入，或是在每個頁面都會套用的root layout中引入。
+
+layout的做法之後會介紹。
+
+以下的範例，為設定個別頁面樣式的做法：
+
+```css
+/* /src/styles/global.css */
+.title {
+        color: blue;
+        font-size: 4rem;
+      }
+
+```
+
+```javascript
+---
+import '../styles/global.css';
+---
+
+<body>
+  <a href="/">首頁</a>
+  <h1 class="title">關於我</h1>
+  <p>這是本站「關於我」的頁面，這裡會放上自我介紹，以及建立本站的原由與初衷。</p>
+</body>
+```
+
+
 
 ## 在頁面中使用動態內容
 
@@ -99,7 +164,7 @@ const name = "Astro";
 
 我們可以運用剛剛了解到的「新增動態內容」的方式，來改變Astro專案頁面的頁籤tittle，就像這樣：
 
-```
+```javascript
 ---
 const pageTitle = "關於我";
 ---
@@ -120,9 +185,39 @@ const pageTitle = "關於我";
 
 你可以先練習嘗試看看，未來我會分享如何利用Layout component的方式，套用在使用相同佈局的頁面，以盡可能符合DIY原則（Don't Repeat Yourself）。
 
+## 開始發文
+
+既然Astro框架的出現，是為了讓網站的內容更容易建立與呈現，它理所當然支援Markdown文件。
+
+什麼是Markdown呢？它是一種輕量級的語法，讓你可以標示出內容的結構或是用途。
+
+就像HTML也是一種標記語言，標記出網頁文本的結構與作用。由於Markdown的簡潔直觀，所以在撰寫內容上，尤其在開發者社群相當普及，再加上它容易上手的特色，Markdown語法也相當受到開發社群以外的創作者們青睞。
+
+如果你對Markdown語法還不熟悉的話，可以參閱[Markdown語法大全](https://hackmd.io/@eMP9zQQ0Qt6I8Uqp2Vqy6w/SyiOheL5N/%2FBVqowKshRH246Q7UDyodFA "Markdown語法大全")。
+
+或是自行Google Markdown語法的介紹，之後有機會筆者在發一篇分享，筆者常用的Markdown語法。
+
+建立Markdown內容就跟你建立頁面一樣：src/pages/posts/post-1.md，接著就可以來撰寫內容：
+
+```markdown
+---
+title: 我的第一篇文
+author: Astro新手
+description: "關於第一篇文章"
+image:
+    url: "https://example.com/assets/randomImg.webp"
+    alt: "封面圖片"
+pubDate: 2024-12-01
+tags: ["astro", "部落格"]
+---
+在Astro專案中，加入第一篇內容
+```
+
+之後就可以在`http://localhost:4321/posts/post-1`上看到你的第一個部落格內容啦！
+
 ## 小結
 
-這一回開始進入stro專案的撰寫，以及初步認識Astro專案架構與基本語法。
+這一回開始進入Astro專案的實作，以及初步認識Astro專案架構、基本語法、頁面建立，以及樣式設定。
 
 如果是熟練JSX的前端開發者，想必可以無縫接軌Astro專案；而Astro盡可能使用HTML，減少非必要JavaScript邏輯的原則，也能讓開發新手快速進入狀況。
 
@@ -130,7 +225,43 @@ const pageTitle = "關於我";
 
 總之，Astro官方的建立部落格教程相當淺顯易懂，非常推薦跟著官方的教程走一遍來認識Astro——這個內容建立工具，筆者的Astro系列文也是走過這個教程的心得分享。
 
-如果真的有點抗拒官方密密麻麻的原文文件，那就先跟著筆者的系列文，先稍微熟悉Astro後，再去官方文件探索囉！
+如果真的對官方密密麻麻的原文文件感到不適應，那可以先跟著筆者的系列文，稍微熟悉Astro後，再去官方文件探索囉！
+
+## 同場加映：Tailwind CSS
+
+簡單介紹一下在Astro專案中，使用Tailwind CSS。
+
+Astro已經將這個CSS框架，整合進去了，只要在終端機使用以下指令：
+
+```
+pnpm astro add tailwind
+```
+
+接著，在你的global.css中匯入：
+
+```css
+/* src/styles/global.css */
+@import "tailwindcss";
+
+```
+
+最後，在專案的進入點，匯入global.css就可以使用囉！
+
+```javascript
+//src/layouts/Layout.astro
+---
+import "../styles/global.css";
+---
+```
+
+詳情可以參閱官方文件：
+
+> Astro官方：使用Tailwind CSS
+> https://docs.astro.build/en/guides/styling/#tailwind
+
+> Tailwind官方：在Astro專案中安裝Tailwind CSS
+>https://tailwindcss.com/docs/installation/framework-guides/astro
+
 
 ## 參考資料：
 

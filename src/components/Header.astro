@@ -2,7 +2,6 @@
 import ThemeToggle from "./ThemeToggle.astro"
 import { LINKS } from "@consts";
 ---
-
 <header id="header" class="w-full fixed z-10 top-0 h-16 px-2 md:px-8">
 	<nav class="h-full flex justify-between items-center">
       <a href="/" class="flex items-center mx-2 md:mx-0">
@@ -14,11 +13,23 @@ import { LINKS } from "@consts";
 		<!-- Desktop Navigation -->
 		<div class="hidden text-lg h-full md:w-1/3 md:flex md:justify-between md:items-center">
       {LINKS.map((LINK) => (
-        <a href={LINK.HREF} data-path={LINK.HREF} class="nav-link py-2 hover:border-b-4 hover:border-b-sky-300">{LINK.TEXT}</a>
+        <a href={LINK.HREF} data-path={LINK.HREF} class="nav-link py-4 hover:border-b-4 hover:border-b-sky-300">{LINK.TEXT}</a>
       ))}
 		</div>
+		
+		<div class="hidden md:flex">
+			<a href="https://github.com/Latseng" target="_blank">
+				<svg viewBox="0 0 16 16" aria-hidden="true" width="24" height="24"
+					><path
+						fill="currentColor"
+						d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+					></path></svg
+				>
+			</a>
+		</div>
     <ThemeToggle />
-		<!-- Mobile Menu Button -->
+
+    <!-- Mobile Menu Button -->
      <button 
       id="menu-button"
       class="md:hidden rounded hover:bg-slate-200 dark:hover:bg-slate-500 "
@@ -33,23 +44,13 @@ import { LINKS } from "@consts";
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
         </svg>
      </button>
-		
-		<div class="hidden md:flex">
-			<a href="https://github.com/Latseng" target="_blank">
-				<svg viewBox="0 0 16 16" aria-hidden="true" width="24" height="24"
-					><path
-						fill="currentColor"
-						d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-					></path></svg
-				>
-			</a>
-		</div>
 	</nav>
 	<!-- Mobile Sidebar -->
 			<div id="sidebar" class="fixed inset-y-0 top-16 right-0 w-1/2 translate-x-full border-t bg-white/75 dark:bg-black/50 backdrop-blur-sm saturate-200 transition-transform md:hidden p-4 flex flex-col items-center gap-4 shadow-xl">
         {LINKS.map((LINK) => (
           <a href={LINK.HREF} data-path={LINK.HREF} class="side-nav-link w-full text-center p-2 rounded hover:bg-gray-300 hover:text-gray-700">{LINK.TEXT}</a>
         ))}
+        <a href="https://github.com/Latseng" target="_blank">
 				<svg viewBox="0 0 16 16" aria-hidden="true" width="24" height="24"
 					><path
 						fill="currentColor"
@@ -88,7 +89,7 @@ import { LINKS } from "@consts";
     // 按下按鈕切換 Sidebar
     menuButton.addEventListener('click', toggleSidebar);
 
-    // 點擊 Sidebar 外部關閉
+    // 點擊 Sidebar 外的區塊，會關閉Sidebar
     window.addEventListener('click', (event) => {
 			const target = event.target as Node; 
       if (isSidebarOpen && !sidebar.contains(target) && !menuButton.contains(target)) {
