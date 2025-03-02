@@ -1,4 +1,5 @@
 ---
+import BackToTop from "@components/BackToTop.astro";
 import Header from "../components/Header.astro";
 const { pageTitle } = Astro.props;
 import "../styles/global.css"
@@ -20,5 +21,6 @@ import { SITE } from "@consts"
     <main class="animate">
       <slot />
     </main>
+     <BackToTop />
   </body>
 </html>
