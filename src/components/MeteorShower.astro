@@ -7,7 +7,7 @@
  */
 ---
 
-<div id="meteors">
+<div id="meteors" class="overflow-hidden absolute inset-0">
   <!-- rotations defined in base.css & tailwind.config.mjs -->
   <div class="shower ur" />
   <div class="shower dr" /> 
@@ -15,7 +15,8 @@
   <div class="shower ul" />
 </div>
 
-<script>
+
+<script >
   function createMeteor () {
   // create a meteor
   let meteor = document.createElement("div");
@@ -37,6 +38,6 @@
   }, 3500);
 }
 
-// Create meteors on interval on two (2) seconds
-setInterval(createMeteor, 1500);
+// Create meteors
+setInterval(createMeteor, 1000);
 </script>
