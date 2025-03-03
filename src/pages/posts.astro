@@ -1,43 +1,17 @@
 ---
-import { getCollection } from "astro:content";
+import TagsCollection from "@components/TagsCollection.astro";
 import BaseLayout from "../layouts/BaseLayout.astro"
 import ArchivePanel from "@components/ArchivePanel.astro";
-
-interface Post {
-  data: {
-    pubDate: Date;
-    tags: string[];
-  };
-}
-
-const allPosts: Post[] = await getCollection("posts");
-const tags = [...new Set(allPosts.map((post: Post) => post.data.tags).flat())];
-const allPostsForList: Post[] = (await getCollection('posts')).sort(
-  (a: Post, b: Post) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-)
-
-const pageTitle = "文章";
-
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle="文章">
     <section class="mt-20 md:mx-12 md:p-8 p-4">
-      <h2 class="text-xl md:text-2xl font-bold">標籤</h2>
-      <div class="flex flex-wrap gap-4 p-4">
-        {tags.map((tag) =>
-        (
-        <a class="text-sky-700 dark:text-sky-500 text-base flex items-center rounded-md border px-4 py-2 hover:bg-sky-200 hover:duration-300" href={`/tags/${tag}`}>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 mr-2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z" />
-            </svg>
-            {tag}
-      </a>))}
-  </div>
+      <h2 class="text-xl md:text-2xl font-bold">Tags</h2>
+      <TagsCollection />
    </section>
     <section class="md:mx-12 md:p-8 p-4">
-        <h2 class="text-xl md:text-2xl font-bold">文章列表</h2>
-        <ArchivePanel />
+      <h2 class="text-xl md:text-2xl font-bold">Archive</h2>
+      <ArchivePanel />
     </section>
 </BaseLayout>
 

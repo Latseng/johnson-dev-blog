@@ -1,10 +1,10 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PostsList from '../../components/PostsList.astro';
+import ArchivePanel from "@components/ArchivePanel.astro";
 
 export async function getStaticPaths() {
-const allPosts = await getCollection("blog");
+const allPosts = await getCollection("posts");
 const uniqueTags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
 
   return uniqueTags.map((tag) => {
@@ -18,14 +18,12 @@ const uniqueTags = [...new Set(allPosts.map((post: any) => post.data.tags).flat(
 } 
 
 const { tag } = Astro.params;
-const { posts } = Astro.props;
+
 
 ---
 <BaseLayout pageTitle={tag}>
   <section class="mt-16 md:p-12 p-8">
-    <h1 class="text-4xl">{tag}</h1>
-      <ul>
-        {posts.map((post: any) => <PostsList url={`/posts/${post.id}/`} title={post.data.title}/>)}
-      </ul>
+    <h2 class="text-xl md:text-2xl font-bold">{tag}</h2>
+        <ArchivePanel tag={tag} />
   </section>
 </BaseLayout>
