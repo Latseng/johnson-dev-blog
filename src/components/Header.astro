@@ -1,8 +1,9 @@
 ---
+import MobileMenuButton from "./MobileMenuButton.astro";
 import ThemeToggle from "./ThemeToggle.astro"
 import { LINKS } from "@consts";
 ---
-<header id="topbar" class="w-full fixed backdrop-blur-md shadow-md z-10 top-0 h-16 px-4 md:px-8">
+<header id="topbar" class="w-full fixed bg-transparent z-10 top-0 h-16 px-4 md:px-8">
 	<nav class="h-full flex justify-between items-center">
       <a href="/" class="flex items-center mx-2 md:mx-0">
         <img class="w-4 md:w-6" src="/my-logo.png" alt="my-logo">
@@ -13,10 +14,9 @@ import { LINKS } from "@consts";
 		<!-- Desktop Navigation -->
 		<div class="hidden text-base h-full md:w-1/3 md:flex md:justify-between md:items-center">
       {LINKS.map((LINK) => (
-        <a href={LINK.HREF} data-path={LINK.HREF} class="nav-link py-4 hover:border-b-4 hover:border-b-sky-300">{LINK.TEXT}</a>
+        <a href={LINK.HREF} data-path={LINK.HREF} class="nav-link py-1 px-4 rounded-xl hover:bg-sky-500 dark:hover:bg-sky-800 hover:text-white transition-all font-semibold">{LINK.TEXT}</a>
       ))}
 		</div>
-		
 		<div class="flex gap-4 items-center">
       <ThemeToggle />
       <a href="https://github.com/Latseng" target="_blank" class="hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 p-2 rounded-full hidden md:block">
@@ -27,31 +27,16 @@ import { LINKS } from "@consts";
 					></path></svg
 				>
 			</a>
-    <!-- Mobile Menu Button -->
-     <button 
-      id="menu-button"
-      class="md:hidden rounded-lg p-1 hover:bg-gray-100 dark:hover:bg-gray-800 "
-      aria-label="Open menu"
-      >
-			<!-- Menu Icon -->
-         <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-         </svg>
-				 <!-- Close Icon -->
-				 <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 hidden">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-        </svg>
-     </button>
+      <MobileMenuButton />
 		</div>
 	</nav>
-	
 </header>
 
 <!-- Mobile Sidebar -->
 			<div id="sidebar" class="fixed top-16 right-2 z-50 backdrop-blur-md border  bg-white rounded-lg dark:bg-black hidden shadow-xl">
         <nav class="flex flex-col p-4 gap-4">
           {LINKS.map((LINK) => (
-          <a href={LINK.HREF} data-path={LINK.HREF} class="mx-auto p-4 text-sm hover:text-sky-500">{LINK.TEXT}</a>
+          <a href={LINK.HREF} data-path={LINK.HREF} class="mx-auto p-4 text-sm font-semibold hover:text-sky-500">{LINK.TEXT}</a>
         ))}
         <a class="mx-auto hover:text-sky-500" href="https://github.com/Latseng" target="_blank">
 				<svg viewBox="0 0 16 16" aria-hidden="true" width="24" height="24"
@@ -66,41 +51,15 @@ import { LINKS } from "@consts";
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const menuButton = document.querySelector<HTMLButtonElement>('#menu-button') 
-    const menuIcon = document.querySelector<HTMLOrSVGImageElement>('#menu-icon') 
-    const closeIcon = document.querySelector<HTMLOrSVGImageElement>('#close-icon')
-    const sidebar = document.querySelector<HTMLDivElement>('#sidebar')
 		const navLinks = document.querySelectorAll('.nav-link')
     const currentPath = window.location.pathname;
-
-    let isSidebarOpen = false;
-
-    // Sidebar 開關
-    const toggleSidebar = () => {
-      isSidebarOpen = !isSidebarOpen;
-      sidebar?.classList.toggle('hidden');
-      menuIcon?.classList.toggle('hidden', isSidebarOpen);
-      closeIcon?.classList.toggle('hidden', !isSidebarOpen);
-      menuButton?.setAttribute('aria-label', isSidebarOpen ? 'Close menu' : 'Open menu');
-    };
-
-    // 按下按鈕切換 Sidebar
-    menuButton?.addEventListener('click', toggleSidebar);
-
-    // 點擊 Sidebar 外的區塊，會關閉Sidebar
-    window.addEventListener('click', (event) => {
-			const target = event.target as Node; 
-      if (isSidebarOpen && !sidebar?.contains(target) && !menuButton?.contains(target)) {
-        toggleSidebar();
-      }
-    });
 
 		// 高亮當前路由導航標籤
 		function toggleHighlight(link: HTMLElement, isActive: boolean) {
     if (isActive) {
-      link.classList.add('border-b-4', 'border-b-sky-300', 'font-bold');
+      link.classList.add('bg-sky-500', 'text-white', 'dark:bg-sky-800');
     } else {
-      link.classList.remove('border-b-2', 'border-b-sky-300', 'font-bold');
+      link.classList.remove('bg-sky-500', 'text-white', 'dark:bg-sky-800');
     }
   }
 
@@ -113,17 +72,17 @@ import { LINKS } from "@consts";
 
   });
 
+  //捲動畫面控制Header樣式
   function headerOnScroll() {
   const topbar = document.getElementById("topbar")
-  
   if (topbar) { 
   if (window.scrollY > 0) {
-    
+    topbar.classList.add("backdrop-blur-lg");
     topbar.classList.add("border-b");
     topbar.classList.add("dark:border-gray-500");
     topbar.classList.add("shadow-md");
   } else {
-    
+    topbar.classList.remove("backdrop-blur-lg")
     topbar.classList.remove("border-b");
     topbar.classList.remove("darK:border-gray-500");
     topbar.classList.remove("shadow-md");

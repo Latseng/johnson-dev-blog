@@ -1,0 +1,47 @@
+---
+---
+<button 
+      id="menu-button"
+      class="md:hidden rounded-lg p-1 hover:bg-gray-100 dark:hover:bg-gray-800 "
+      aria-label="Open menu"
+      >
+			<!-- Menu Icon -->
+         <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+         </svg>
+				 <!-- Close Icon -->
+				 <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 hidden">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+     </button>
+
+     <script>
+       document.addEventListener('DOMContentLoaded', () => {
+        const menuButton = document.querySelector<HTMLButtonElement>('#menu-button') 
+        const menuIcon = document.querySelector<HTMLOrSVGImageElement>('#menu-icon') 
+        const closeIcon = document.querySelector<HTMLOrSVGImageElement>('#close-icon')
+        let isSidebarOpen = false;
+        const sidebar = document.querySelector<HTMLDivElement>('#sidebar')
+
+         // Sidebar 開關
+        const toggleSidebar = () => {
+          isSidebarOpen = !isSidebarOpen;
+          sidebar?.classList.toggle('hidden');
+          menuIcon?.classList.toggle('hidden', isSidebarOpen);
+          closeIcon?.classList.toggle('hidden', !isSidebarOpen);
+          menuButton?.setAttribute('aria-label', isSidebarOpen ? 'Close menu' : 'Open menu');
+         };
+
+         // 按下按鈕切換 Sidebar
+       menuButton?.addEventListener('click', toggleSidebar);
+
+        // 點擊 Sidebar 外的區塊，會關閉Sidebar
+        window.addEventListener('click', (event) => {
+			    const target = event.target as Node; 
+          if (isSidebarOpen && !sidebar?.contains(target) && !menuButton?.contains(target)) {
+        toggleSidebar();
+      }
+    });
+       })
+
+     </script>

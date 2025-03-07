@@ -1,7 +1,7 @@
 ---
-title: "用Astro無痛code出自己的部落格：頁面"
+title: 用Astro無痛code出自己的部落格：頁面
 pubDate: 2024-12-17
-description: "網頁開發者還在煩惱該怎麼建立自己的個人網站嗎？快來試試Astro，這款打造個人部落格／作品集的神器吧！"
+description: 網頁開發者還在煩惱該怎麼建立自己的個人網站嗎？快來試試Astro，這款打造個人部落格／作品集的神器吧！
 author: 江森
 image:
   url: "/start-building-your-web-with-astro-add-pages.jpg"
