@@ -1,10 +1,10 @@
 ---
-title: '用Astro無痛code出自己的部落格：文章列表'
+title: '用Astro無痛code出自己的部落格：用API建立文章列表'
 author: 江森
 description: 網頁開發者還在煩惱該怎麼建立自己的個人網站嗎？快來試試Astro，這款打造個人部落格／作品集的神器吧！
 pubDate: 2025-03-07
 image:
-      url: "/start-building-your-web-with-astro-install.jpg"
+      url: "/astro-api-posts-list.png"
       alt: 'cover picture'
 tags: ["Front-end", "Astro", "Blog"]
 ---
@@ -123,7 +123,7 @@ pubDate: 2025-03-03
 image:
       url: ''
       alt: 'cover picture'
-tags: ["Astro", "範例"]
+tags: ["astro", "blog", "first"]
 ---
 
 ## 第一篇範例文
@@ -490,7 +490,7 @@ console.log最後會印出的是`['somestring', 42, false]`陣列。
 
 如果你有跟著筆者流程，最後完成會是這個樣子：
 
-![文章頁面](/astro-blog-post-page.png "游標顯示")
+![文章頁面](/astro-blog-post-page.png)
 
 這麼一來我們就成功利用了Asto的API完成一個文章列表的頁面囉～
 
@@ -504,11 +504,8 @@ console.log最後會印出的是`['somestring', 42, false]`陣列。
 
 ## 參考資料
 
-> Astro 官網建立部落格教程：
-> https://docs.astro.build/en/tutorial/0-introduction/
+> [Astro官網建立部落格教程](https://docs.astro.build/en/tutorial/0-introduction)
 
->Astro `import.meta.glob()`：
->https://docs.astro.build/en/guides/imports/#importmetaglob
+> [Astro `import.meta.glob()`](https://docs.astro.build/en/guides/imports/#importmetaglob)
 
->Vite `import.meta.glob()`：
->https://vite.dev/guide/features.html#glob-import
+> [Vite `import.meta.glob()`](https://vite.dev/guide/features.html#glob-import)

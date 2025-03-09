@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArchivePanel from "@components/ArchivePanel.astro";
 
 export async function getStaticPaths() {
+  
 const allPosts = await getCollection("posts");
 const uniqueTags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
 
@@ -18,12 +19,10 @@ const uniqueTags = [...new Set(allPosts.map((post: any) => post.data.tags).flat(
 } 
 
 const { tag } = Astro.params;
-
-
 ---
 <BaseLayout pageTitle={tag}>
   <section class="mt-16 md:p-12 p-8">
     <h2 class="text-xl md:text-2xl font-bold">{tag}</h2>
-        <ArchivePanel tag={tag} />
+    <ArchivePanel tag={tag} />
   </section>
 </BaseLayout>
