@@ -7,7 +7,6 @@
   --primary: oklch(0.70 0.14 var(--hue));
    --btn-plain-bg-hover: oklch(0.95 0.025 var(--hue)) oklch(0.30 0.035 var(--hue))
   --btn-plain-bg-active: oklch(0.98 0.01 var(--hue)) oklch(0.27 0.025 var(--hue))
- 
    --radius-large: 1rem
 }
 
