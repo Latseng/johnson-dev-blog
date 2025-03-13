@@ -3,7 +3,7 @@ import PostComments from "@components/PostComments.astro";
 import BaseLayout from "./BaseLayout.astro";
 import PageViews from "@components/PageViews.astro";
 const pageUrl = new URL(Astro.url.pathname, Astro.url.origin).href;
-const { frontmatter } = Astro.props;
+const { frontmatter, readingTime } = Astro.props;
 ---
 <BaseLayout pageTitle={frontmatter.title}>
     <article class="prose sm:prose-lg dark:prose-invert mt-24 mx-auto p-4">
@@ -24,6 +24,8 @@ const { frontmatter } = Astro.props;
          <span>
           <a href="/about" class="no-underline hover:underline">{frontmatter.author}</a>
         </span>
+         <span class="mx-1">|</span>
+         <span>閱讀時間：{readingTime}</span>
          <span class="mx-1">|</span>
          <PageViews url={pageUrl} />
       </div>
