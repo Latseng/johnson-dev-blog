@@ -47,7 +47,7 @@ Ant Design 的開發文件頁面，頂部直接寫明為 React 專用。似乎�
 
 ## 引入元件
 
-```JavaScript
+```jsx
 import { Button } from 'antd';
 const Example = () => (
   <div>
@@ -78,13 +78,13 @@ default（預設）
 
 其中我常用來提示使用者慎重操作的紅色按鈕，就是 danger，不過是使用屬性而非 color 的值，就像底下的：
 
-```JavaScript
+```jsx
 <Button danger={true}>我是按鈕</Button>
 ```
 
 danger 這個屬性，可以放入的值為 boolean，像範例中 danger 的值為 true，即為啟用樣式，或是直接省略直即默認為啟用：
 
-```JavaScript
+```jsx
 <Button danger>我是按鈕</Button>
 ```
 

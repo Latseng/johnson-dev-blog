@@ -57,7 +57,7 @@ const students = [
 
 你打算用這串資料來建立學生列表，在 React 專案中就可以這麼做：
 
-```JavaScript
+```jsx
 
 const StudentsList = () => {
   return (
@@ -111,7 +111,7 @@ key。
 
 再來就是在你要使用的地方，呼叫 uuidv4()來產生 id 即可，拿上面的學生列表來舉例：
 
-```JavaScript
+```jsx
 const StudentsList = () => {
   const [studentInfo, setStudentInfo] = useState([]);
 
