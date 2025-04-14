@@ -15,5 +15,10 @@ export default defineConfig({
   },
   vite: {
     assetsInclude: ["**/*.yaml"],
+    build: {
+      rollupOptions: {
+        external: ["fsevents"],
+      },
+    },
   },
 });
