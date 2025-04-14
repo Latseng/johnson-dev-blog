@@ -13,4 +13,7 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkReadingTime],
   },
+  vite: {
+    assetsInclude: ["**/*.yaml"],
+  },
 });
