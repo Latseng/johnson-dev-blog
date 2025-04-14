@@ -1,7 +1,7 @@
 ---
 title: '[JS筆記]Array.reduce()方法'
 author: 江森
-description: '一個相當特別的陣列原生操作方法'
+description: 'JavaScript當中，比較難上手的陣列操作方法'
 pubDate: 2025-03-20
 image:
       url: '/cover-img-javascript.jpg'
