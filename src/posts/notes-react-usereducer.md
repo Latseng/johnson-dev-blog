@@ -56,19 +56,27 @@ const [state, dispatch] = useReducer(reducer, initialArg, init?)
 
 是一個函式，筆者私自稱它為派發函式，專門發送狀態的更新訊息的跑腿小弟，狀態更新的觸發就靠它。
 
+當我們呼叫dispatch來更新狀態時，會使用一個預先定義好的物件當作參數。聽起來還是很抽象，待會就會示範使用方式，讓你比較清楚它在幹嘛~
+
+而跟`useState`有兩個地方相同，第一個相同之處在於，dispatch function更新後的狀態，在re-render後才讀得到。
+
+也就是說你如果在呼叫dispatch後，在下一行馬上用console讀取，印出來的會是更新前的狀態值。
+
+再來就是，你所更新的state值，若是經由Object.js比較後，跟上一次的state相同的話，將不會觸發re-render。
+
 3. useReducer
 
-就是React的Hook，你可以把想成React給你的，一個專門用來狀態更新的神秘機器，先別管這個機器怎麼運作，你只要先知道它若是要運作，會需要你給它一些東西，然後它運作會給你需要的。
+就是React的Hook，你可以把想成React給你的，一個專門用來狀態更新的神秘機器。你可能現在還不清楚這部機器是怎麼運作，接下來會進一步解釋，現階段你只要先知道，它若是要運作，會需要你給它一些東西，然後它運作會給你需要的。
 
 4. reducer
 
-狀態更新機制的核心。
+狀態更新機制的核心，處理狀態更新邏輯的函式。
 
 `reducer`接收兩個參數：當前的狀態值`state`跟`action`。
 
 就跟`useState`一樣，每次使用`setState()`更新狀態時，都是以當前狀態的資料為基礎進行更新。
 
-不同的地方在於，`setState()`只管你給它的新狀態值，它用新的資料更新狀態，它不管你的新資料是怎麼來的，而`reducer`則是將更新狀態的機制定義在函式內，`reducer`同時也是個純函式：只要給定相同的輸入，必定返回相同的輸出。這些特性，讓開發者容易維護`reducer`。
+不同的地方在於，`setState()`只管你給它的新狀態值，它用新的資料更新狀態，它不管你的新資料是怎麼來的，而`reducer`則是將更新狀態的機制定義在函式內，`reducer`同時也是個純函式：只要給定相同的輸入，必定返回相同的輸出。這個「單純」的特性，讓`reducer`容易預測與維護。
 
 而action則是一個物件，這包物件會帶有我們預先定義好的資料，筆者私自稱它為操作種類，操作種類會影響reducer怎麼跑狀態更新的流程，接下來的示範會讓你更清楚以上的抽象描述到底在搞什麼。
 
@@ -76,11 +84,11 @@ const [state, dispatch] = useReducer(reducer, initialArg, init?)
 
 這兩個要放在一起介紹，因為他們倆會一起決定狀態的初始值。
 
-首先是init，它是一個callback function，並且它是可選的。
+首先是init，它是一個callback function，並且它是可選的，筆者私自稱它為初始化函式。
 
-當狀態初始值是不確定，需要靠某些計算來確定時，就使用init這個函式，並且填入nitialArg當成init呼叫的參數，利用這個參數來計算出初始狀態值。
+當狀態初始值是不確定的，需要先進行某些計算來確定時，就使用init這個函式，並且填入nitialArg當成init呼叫的參數，利用這個參數來計算出初始狀態值。
 
-當初始狀態是確定的，那就以initialArg當成初始值，並且省略init函式。
+當初始狀態是確定的，那我們可以省略init函式，就直接以initialArg當成初始的狀態值。
 
 ## 使用情境
 
@@ -240,11 +248,11 @@ event handler更新狀態的任務被拔除、轉移到reducer當中，變成只
 
 筆者之前在的[[JS筆記]Array.reduce()方法
 ](https://johnson-dev.netlify.app/posts/notes-js-reduce/)
-一文當中，也有談到React的`useReducer`和Redux，這兩者狀態的管理機制，就是參考自`array.reducer()`方法。
+一文當中，也有談到React的`useReducer`和Redux，這兩者狀態的管理機制，就是參考自`array.reducer()`方法的運做邏輯。
 
 狀態更新就像陣列迭代，差別在於，陣列的迭代次數，在給定陣列時就確定了，而狀態的變更次數卻不一定。
 
-`array.reduce()`需要填入的callback function就跟`reducer`一樣，預先就決定好每一次執行時該怎麼改變，而累加器就跟Reducer中的`state`一樣，從初始開始變化，每一次的變化結果，都是基於上一次的變化結果。
+`array.reduce()`需要填入的callback function就跟`reducer`一樣，預先就決定好每一次執行時會怎麼改變，而累加器就跟Reducer中的`state`一樣，從初始值開始迭代更新，每一次的更新結果，都是基於上一次的值。
 
 它們在運作機制上的共通性相當值得玩味，而在釐清邏輯後，我們就能體會到這些工具為程式碼所帶來的簡潔與優雅。
 
@@ -254,6 +262,6 @@ event handler更新狀態的任務被拔除、轉移到reducer當中，變成只
 
 那什麼時候會需要請出`useReducer`呢？
 
-當你發現你的`useState`增加得太快，或是同一個狀態會再多個event handler使用時，才來考慮`useReducer`。
+當你發現你的`useState`增加得太快，或是同一個狀態在多個event handler內更新時，才來考慮`useReducer`。
 
 `useReducer`是個很棒的狀態管理Hook，它能幫你整理複雜的狀態資料與更新，但記得：殺雞先別太快用上牛刀！
