@@ -35,6 +35,17 @@ export const LINKS: Links = [
   },
 ];
 
+export const HERO_WORDS = [
+  { text: "開發", imgPath: "/code.svg" },
+  { text: "想法", imgPath: "/ideas.svg" },
+  { text: "概念", imgPath: "/concepts.svg" },
+  { text: "設計", imgPath: "/designs.svg" },
+  { text: "開發", imgPath: "/code.svg" },
+  { text: "想法", imgPath: "/ideas.svg" },
+  { text: "概念", imgPath: "/concepts.svg" },
+  { text: "設計", imgPath: "/designs.svg" },
+];
+
 // Socials
 export const SOCIALS: Socials = [
   // {

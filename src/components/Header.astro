@@ -3,7 +3,7 @@ import MobileMenuButton from "./MobileMenuButton.astro";
 import ThemeToggle from "./ThemeToggle.astro"
 import { LINKS } from "@consts";
 ---
-<header id="topbar" class="w-full fixed bg-transparent z-10 top-0 h-16 px-4 md:px-8">
+<header id="topbar" class="w-full fixed bg-transparent z-50 top-0 h-16 px-4 md:px-8">
 	<nav class="h-full flex justify-between items-center">
       <a href="/" class="flex items-center mx-2 md:mx-0">
         <img class="w-4 md:w-6" src="/my-logo.png" alt="my-logo">
@@ -13,11 +13,14 @@ import { LINKS } from "@consts";
       </a>
 
 		<!-- Desktop Navigation -->
-		<div class="hidden text-base h-full md:w-1/3 md:flex md:justify-between md:items-center">
+		<ul class="hidden text-base h-full md:w-1/3 md:flex md:justify-between md:items-center">
       {LINKS.map((LINK) => (
-        <a href={LINK.HREF} data-path={LINK.HREF} class="nav-link py-1 px-4 rounded-xl hover:bg-slate-200 hover:text-black transition-all font-semibold">{LINK.TEXT}</a>
+        <li class="link-list relative group">
+          <a href={LINK.HREF} data-path={LINK.HREF} class="nav-link py-1 px-4 rounded-xl transition-all font-semibold">{LINK.TEXT}</a>
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-black dark:bg-white transition-all duration-300 group-hover:w-full" />
+        </li>
       ))}
-		</div>
+		</ul>
 		<div class="flex gap-4 items-center">
       <ThemeToggle />
       <a href="https://github.com/Latseng" target="_blank" class="hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 p-2 rounded-full hidden md:block">
@@ -52,23 +55,26 @@ import { LINKS } from "@consts";
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-		const navLinks = document.querySelectorAll('.nav-link')
+		const linkList = document.querySelectorAll('.link-list')
     const currentPath = window.location.pathname;
 
-		// 高亮當前路由導航標籤
+		// Highlight當前路由導航標籤
 		function toggleHighlight(link: HTMLElement, isActive: boolean) {
     if (isActive) {
-      link.classList.add('bg-slate-500', 'text-white');
+      link.classList.add('w-full');
+      link.classList.remove('w-0');
     } else {
-      link.classList.remove('bg-slate-500', 'text-white');
+      link.classList.add('w-0');
+      link.classList.remove('w-full');
     }
   }
 
-	navLinks.forEach((link) => {
-    const navLink = link as HTMLElement
+	linkList.forEach((link) => {
+    const navLink = link.querySelector('a') as HTMLElement
     const linkPath = navLink.dataset.path || ""
     const isActive = linkPath === '/' ? currentPath === '/' : currentPath.startsWith(linkPath);
-    toggleHighlight(navLink, isActive);
+    const linkHighlight = link.querySelector('span') as HTMLElement
+    toggleHighlight(linkHighlight, isActive);
   });
 
   });

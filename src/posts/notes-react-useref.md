@@ -47,7 +47,9 @@ ref = {
 
 要特別注意的是，你只能在`useEffect`以及`event handler`內讀、寫ref.current資料。
 
-如果你在這兩種情況以外更動ref，會導致額外的副作用，官網文件有特別強調： 除了初始化外，渲染期間不要存取`ref.current`，這是因為ref常會綁定HTML元素，在渲染完成前，ref會是`null`，而event handler只會在渲染結束後執行，所以在event handler內讀寫ref資料才不會發生抓取不到DOM的狀況。
+如果你在這兩種情況以外更動ref，會導致預期之外的副作用。
+
+官網文件有特別強調： 除了初始化外，渲染期間不要存取`ref.current`，這是因為ref常會綁定HTML元素，在DOM渲染完成前，綁定HTML元素的ref會是`null`，而event handler只會在渲染結束後執行，所以在event handler內讀寫ref資料才不會發生抓取不到DOM的狀況。
 
 ## 常見用法
 
@@ -281,11 +283,57 @@ function scrollToCat(cat) {
 
 ref callback的實作方式，可以搭配.map()的陣列渲染，讓你容易管理動態生成的列表元素，而不需要一一為每個元素單獨創建ref。
 
+
 ## 小結
 
-跟useState相同的地方在於，useRef也可以讓我們控制FC內的資料，但是該如何分別哪些情況要選用哪個Hook呢？
+在上面的使用案例中有提到，可以使用`useRef`控制`input`欄位的focus狀態，但在輸入值處理的部分，有時候我們會在React中看到兩種不同的實作方式：
 
-渲染控制就是state，無關渲染就是ref。
+1. 使用`useState`處理`input`欄位的值：
+
+```jsx
+import { useState } from 'react'
+
+const Input = () => {
+  const [text, setText] = useState('');
+
+  const handleChange = (e) => {
+    setText(e.target.value);
+  };
+
+return <input value={text} onChange={(e) => setText(e.target.value)} />;
+}
+
+```
+
+2. 使用`useRef`處理`input`欄位的值：
+
+```jsx
+import { useRef } from 'react'
+
+const Input = () => {
+  const inputRef = useRef(null);
+
+return <input defaultValue={inputRef.current} onChage={(e) => (inputRef.current = e.target.vale)} />;
+}
+
+```
+
+這兩種實作方式有什麼差異呢？
+
+使用`useState`控制輸入欄值的情況：
+
+1. 需要即時反應用戶輸入（如搜索建議、字符計數）
+2. 需要在 UI 中反映輸入狀態
+3. 需要在多個元件間共享或傳遞輸入狀態
+
+使用`useRef`處理輸入欄位值的情況：
+
+1. 表單元件的邏輯較複雜或是需要處理非常頻繁的更新（如拖曳操作），擔心性能問題
+2. 僅需要在表單提交時處理輸入值
+3. 不需要根據輸入更新 UI
+4. 需要直接操作DOM元素的其他屬性或方法
+
+由以上的例子可以看出，雖然`useRef`跟`useState`同樣都可以控制FC內的資料，但兩者差別在於：會連帶控制渲染就是state，無關渲染就是ref。
 
 官網對於這個Hook的特性，形容得相當貼切：useRef就是React單向資料流的逃生艙，它讓你在單向資料流的邏輯中，埋入一個不參與re-render的操控方式。
 
