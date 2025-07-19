@@ -15,14 +15,16 @@ interface Post {
 }
 
 const { post } = Astro.props as { post: Post };
-const { Content, remarkPluginFrontmatter } = await render(post);
+const { Content, remarkPluginFrontmatter, headings } = await render(post);
 
 const time = remarkPluginFrontmatter.minutesRead.split(" ")[0]; // 時間
 const unit = remarkPluginFrontmatter.minutesRead.split(" ")[1]; // 時間單位
 const readingTime = time + " " + unit;
 
+const validHeadings = headings.filter((heading: { depth: number; }) => heading.depth === 2)
+
 ---
 
-<PostLayout frontmatter={post.data} readingTime={readingTime}>
+<PostLayout frontmatter={post.data} readingTime={readingTime} headings={validHeadings}>
   <Content />
 </PostLayout> 

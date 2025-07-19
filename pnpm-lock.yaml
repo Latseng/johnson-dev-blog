@@ -9,17 +9,17 @@ importers:
   .:
     dependencies:
       '@astrojs/mdx':
-        specifier: ^4.3.0
-        version: 4.3.0(astro@5.8.1(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1))
+        specifier: ^4.3.1
+        version: 4.3.1(astro@5.12.0(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1))
       '@astrojs/tailwind':
         specifier: ^6.0.2
-        version: 6.0.2(astro@5.8.1(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1))(tailwindcss@3.4.17)
+        version: 6.0.2(astro@5.12.0(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1))(tailwindcss@3.4.17)
       astro:
-        specifier: ^5.8.1
-        version: 5.8.1(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1)
+        specifier: ^5.12.0
+        version: 5.12.0(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1)
       astro-cloudinary:
         specifier: ^1.3.2
-        version: 1.3.2(astro@5.8.1(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1))(jiti@1.21.7)(postcss@8.5.3)(typescript@5.7.2)(yaml@2.7.1)
+        version: 1.3.2(astro@5.12.0(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1))(jiti@1.21.7)(postcss@8.5.3)(typescript@5.7.2)(yaml@2.7.1)
       astro-icon:
         specifier: ^1.1.5
         version: 1.1.5
@@ -55,17 +55,17 @@ packages:
   '@antfu/utils@8.1.1':
     resolution: {integrity: sha512-Mex9nXf9vR6AhcXmMrlz/HVgYYZpVGJ6YlPgwl7UnaFpnshXs6EK/oa5Gpf3CzENMjkvEx2tQtntGnb7UtSTOQ==}
 
-  '@astrojs/compiler@2.11.0':
-    resolution: {integrity: sha512-zZOO7i+JhojO8qmlyR/URui6LyfHJY6m+L9nwyX5GiKD78YoRaZ5tzz6X0fkl+5bD3uwlDHayf6Oe8Fu36RKNg==}
+  '@astrojs/compiler@2.12.2':
+    resolution: {integrity: sha512-w2zfvhjNCkNMmMMOn5b0J8+OmUaBL1o40ipMvqcG6NRpdC+lKxmTi48DT8Xw0SzJ3AfmeFLB45zXZXtmbsjcgw==}
 
   '@astrojs/internal-helpers@0.6.1':
     resolution: {integrity: sha512-l5Pqf6uZu31aG+3Lv8nl/3s4DbUzdlxTWDof4pEpto6GUJNhhCbelVi9dEyurOVyqaelwmS9oSyOWOENSfgo9A==}
 
-  '@astrojs/markdown-remark@6.3.2':
-    resolution: {integrity: sha512-bO35JbWpVvyKRl7cmSJD822e8YA8ThR/YbUsciWNA7yTcqpIAL2hJDToWP5KcZBWxGT6IOdOkHSXARSNZc4l/Q==}
+  '@astrojs/markdown-remark@6.3.3':
+    resolution: {integrity: sha512-DDRtD1sPvAuA7ms2btc9A7/7DApKqgLMNrE6kh5tmkfy8utD0Z738gqd3p5aViYYdUtHIyEJ1X4mCMxfCfu15w==}
 
-  '@astrojs/mdx@4.3.0':
-    resolution: {integrity: sha512-OGX2KvPeBzjSSKhkCqrUoDMyzFcjKt5nTE5SFw3RdoLf0nrhyCXBQcCyclzWy1+P+XpOamn+p+hm1EhpCRyPxw==}
+  '@astrojs/mdx@4.3.1':
+    resolution: {integrity: sha512-0ynzkFd5p2IFDLPAfAcGizg44WyS0qUr43nP2vQkvrPlpoPEMeeoi1xWiWsVqQNaZ0FOmNqfUviUn52nm9mLag==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0}
     peerDependencies:
       astro: ^5.0.0
@@ -701,8 +701,8 @@ packages:
   astro-icon@1.1.5:
     resolution: {integrity: sha512-CJYS5nWOw9jz4RpGWmzNQY7D0y2ZZacH7atL2K9DeJXJVaz7/5WrxeyIxO8KASk1jCM96Q4LjRx/F3R+InjJrw==}
 
-  astro@5.8.1:
-    resolution: {integrity: sha512-lkBg1smMRFW+FQ6i92SgEN53o4+ItRjlRt6Ck+rEjmTcb57Bid7faTNKUQNYuNnxiesTWw3NJDyVPQPbfKDyfw==}
+  astro@5.12.0:
+    resolution: {integrity: sha512-Oov5JsMFHuUmuO+Nx6plfv3nQNK1Xl/8CgLvR8lBhZTjYnraxhuPX5COVAzbom+YLgwaDfK7KBd8zOEopRf9mg==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -2059,8 +2059,8 @@ packages:
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
 
-  smol-toml@1.3.1:
-    resolution: {integrity: sha512-tEYNll18pPKHroYSmLLrksq233j021G0giwW7P3D24jC54pQ5W5BXMsQ/Mvw1OJCmEYDgY+lrzT+3nNUtoNfXQ==}
+  smol-toml@1.4.1:
+    resolution: {integrity: sha512-CxdwHXyYTONGHThDbq5XdwbFsuY4wlClRGejfE2NtwUtiHYsP1QtNsHb/hnj31jKYSchztJsaA8pSQoVzkfCFg==}
     engines: {node: '>= 18'}
 
   source-map-js@1.2.1:
@@ -2510,11 +2510,11 @@ snapshots:
 
   '@antfu/utils@8.1.1': {}
 
-  '@astrojs/compiler@2.11.0': {}
+  '@astrojs/compiler@2.12.2': {}
 
   '@astrojs/internal-helpers@0.6.1': {}
 
-  '@astrojs/markdown-remark@6.3.2':
+  '@astrojs/markdown-remark@6.3.3':
     dependencies:
       '@astrojs/internal-helpers': 0.6.1
       '@astrojs/prism': 3.3.0
@@ -2531,7 +2531,7 @@ snapshots:
       remark-rehype: 11.1.2
       remark-smartypants: 3.0.2
       shiki: 3.2.2
-      smol-toml: 1.3.1
+      smol-toml: 1.4.1
       unified: 11.0.5
       unist-util-remove-position: 5.0.0
       unist-util-visit: 5.0.0
@@ -2540,12 +2540,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@4.3.0(astro@5.8.1(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1))':
+  '@astrojs/mdx@4.3.1(astro@5.12.0(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1))':
     dependencies:
-      '@astrojs/markdown-remark': 6.3.2
+      '@astrojs/markdown-remark': 6.3.3
       '@mdx-js/mdx': 3.1.0(acorn@8.14.1)
       acorn: 8.14.1
-      astro: 5.8.1(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1)
+      astro: 5.12.0(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1)
       es-module-lexer: 1.6.0
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.5
@@ -2563,9 +2563,9 @@ snapshots:
     dependencies:
       prismjs: 1.30.0
 
-  '@astrojs/tailwind@6.0.2(astro@5.8.1(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1))(tailwindcss@3.4.17)':
+  '@astrojs/tailwind@6.0.2(astro@5.12.0(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1))(tailwindcss@3.4.17)':
     dependencies:
-      astro: 5.8.1(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1)
+      astro: 5.12.0(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1)
       autoprefixer: 10.4.21(postcss@8.5.3)
       postcss: 8.5.3
       postcss-load-config: 4.0.2(postcss@8.5.3)
@@ -3061,12 +3061,12 @@ snapshots:
 
   '@ungap/structured-clone@1.3.0': {}
 
-  '@unpic/astro@0.0.47(astro@5.8.1(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1))':
+  '@unpic/astro@0.0.47(astro@5.12.0(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1))':
     dependencies:
       '@unpic/core': 0.0.49
       '@unpic/pixels': 1.3.0
       '@unpic/placeholder': 0.1.2
-      astro: 5.8.1(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1)
+      astro: 5.12.0(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1)
       blurhash: 2.0.5
 
   '@unpic/core@0.0.49':
@@ -3120,15 +3120,15 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro-cloudinary@1.3.2(astro@5.8.1(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1))(jiti@1.21.7)(postcss@8.5.3)(typescript@5.7.2)(yaml@2.7.1):
+  astro-cloudinary@1.3.2(astro@5.12.0(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1))(jiti@1.21.7)(postcss@8.5.3)(typescript@5.7.2)(yaml@2.7.1):
     dependencies:
       '@cloudinary-util/types': 1.6.0
       '@cloudinary-util/url-loader': 6.0.0
       '@cloudinary-util/util': 4.1.0
       '@cloudinary/url-gen': 1.21.0
-      '@unpic/astro': 0.0.47(astro@5.8.1(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1))
+      '@unpic/astro': 0.0.47(astro@5.12.0(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1))
       '@unpic/core': 0.0.49
-      astro: 5.8.1(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1)
+      astro: 5.12.0(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1)
       tsup: 8.4.0(jiti@1.21.7)(postcss@8.5.3)(typescript@5.7.2)(yaml@2.7.1)
       unpic: 3.22.0
     transitivePeerDependencies:
@@ -3150,11 +3150,11 @@ snapshots:
       - debug
       - supports-color
 
-  astro@5.8.1(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1):
+  astro@5.12.0(@types/node@22.14.1)(jiti@1.21.7)(rollup@4.40.0)(typescript@5.7.2)(yaml@2.7.1):
     dependencies:
-      '@astrojs/compiler': 2.11.0
+      '@astrojs/compiler': 2.12.2
       '@astrojs/internal-helpers': 0.6.1
-      '@astrojs/markdown-remark': 6.3.2
+      '@astrojs/markdown-remark': 6.3.3
       '@astrojs/telemetry': 3.3.0
       '@capsizecss/unpack': 2.4.0
       '@oslojs/encoding': 1.1.0
@@ -3197,8 +3197,9 @@ snapshots:
       rehype: 13.0.2
       semver: 7.7.1
       shiki: 3.2.2
+      smol-toml: 1.4.1
       tinyexec: 0.3.2
-      tinyglobby: 0.2.12
+      tinyglobby: 0.2.14
       tsconfck: 3.1.5(typescript@5.7.2)
       ultrahtml: 1.6.0
       unifont: 0.5.0
@@ -5061,7 +5062,7 @@ snapshots:
 
   sisteransi@1.0.5: {}
 
-  smol-toml@1.3.1: {}
+  smol-toml@1.4.1: {}
 
   source-map-js@1.2.1: {}
 
