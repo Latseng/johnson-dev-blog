@@ -7,6 +7,7 @@ image:
       url: '/cover-img-javascript.jpg'
       alt: 'cover picture'
 tags: ["JavaScript"]
+draft: false
 ---
 
 人們對事物的理解就像一段沒有終點的旅程，而當前理解就是在旅途中，對某一個片段的回顧。

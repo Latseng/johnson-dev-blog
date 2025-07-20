@@ -7,6 +7,7 @@ image:
   url: "/start-building-your-web-with-astro-component-layout.png"
   alt: "Cover Picture"
 tags: ["Front-end", "Astro", "Blog"]
+draft: false
 ---
 
 ## 前言

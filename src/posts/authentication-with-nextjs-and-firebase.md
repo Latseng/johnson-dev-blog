@@ -7,6 +7,7 @@ image:
       url: '/nextjs-firebase-auth.png'
       alt: 'cover picture'
 tags: ["Next.js"]
+draft: false
 ---
 ## 前言
 

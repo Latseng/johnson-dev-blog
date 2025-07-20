@@ -7,6 +7,7 @@ image:
   url: "/start-building-your-web-with-astro-add-pages.jpg"
   alt: "Cover Picture"
 tags: ["Front-end", "Astro", "Blog"]
+draft: false
 ---
 
 ## 開始Astro專案

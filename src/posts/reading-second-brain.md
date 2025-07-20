@@ -7,6 +7,7 @@ image:
   url: "/gpt-second-brain.png"
   alt: "cover picture"
 tags: ["Reading", "Thinking"]
+draft: false
 ---
 
 「如果人生是一項專案，你會怎麼管理它呢？」這是幾年前我忘記在哪看到過的有趣觀點，關於人生的問題都是大哉問，很難有一個簡單又直接的答案，就跟進行複雜又多變的專案工作一樣。

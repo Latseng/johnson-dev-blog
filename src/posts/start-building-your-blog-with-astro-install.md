@@ -7,6 +7,7 @@ image:
   url: "/start-building-your-web-with-astro-install.jpg"
   alt: "Cover Picture"
 tags: ["Front-end", "Astro", "Blog"]
+draft: false
 ---
 ## 前言
 筆者在[上一回](/posts/start-building-your-blog-with-astro/)推坑並介紹了Astro——這個專攻內容呈現為主的網站架設框架。

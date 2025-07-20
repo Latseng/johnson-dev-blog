@@ -7,6 +7,7 @@ image:
   url: "/introduction-to-computational-thinking.png"
   alt: "cover picture"
 tags: ["Reading", "Thinking"]
+draft: false
 ---
 ## 前言
 

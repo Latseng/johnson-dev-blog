@@ -7,6 +7,7 @@ image:
   url: "/lautaro-react.jpg"
   alt: "cover picture"
 tags: ["Front-end", "React"]
+draft: false
 ---
 ## 前言
 

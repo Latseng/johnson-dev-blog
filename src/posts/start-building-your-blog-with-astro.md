@@ -7,6 +7,7 @@ image:
   url: "/start-with-astro.png"
   alt: "Cover Picture"
 tags: ["Front-end", "Astro", "Blog"]
+draft: false
 ---
 
 ## 前言

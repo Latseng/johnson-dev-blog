@@ -7,6 +7,7 @@ image:
       url: "/astro-dynamic-routes.png"
       alt: 'cover picture'
 tags: ["Front-end", "Astro", "Blog"]
+draft: false
 ---
 
 ## 前言

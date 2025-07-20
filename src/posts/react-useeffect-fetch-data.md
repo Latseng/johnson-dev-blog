@@ -7,6 +7,7 @@ image:
   url: "/useEffect-fetch-data.webp"
   alt: "cover picture"
 tags: ["Front-end", "React"]
+draft: false
 ---
 
 ## 前言

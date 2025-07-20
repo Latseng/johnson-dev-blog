@@ -7,6 +7,7 @@ image:
       url: '/cover-img-javascript.jpg'
       alt: 'cover picture'
 tags: ["JavaScript"]
+draft: false
 ---
 在JavaScript的開發之路上，少不了對於陣列資料的操作處理。
 

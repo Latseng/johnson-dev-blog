@@ -7,6 +7,7 @@ image:
       url: '/auth.jpg'
       alt: 'cover picture'
 tags: ["Front-end"]
+draft: false
 ---
 ## 前言
 
