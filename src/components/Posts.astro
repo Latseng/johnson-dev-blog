@@ -1,0 +1,40 @@
+---
+import PostCard from "./PostCard.astro";
+const { posts } = Astro.props;
+---
+<div
+  class="transition flex flex-col py-1 md:py-0 md:bg-transparent md:gap-4 mb-4"
+>
+  {
+    posts.map(
+      (entry: {
+        data: {
+          title: string;
+          tags: string[];
+          category: string;
+          pubDate: Date;
+          image: { url: string };
+          description: string;
+          updated: Date;
+        };
+        slug: string;
+        id: string;
+      }) => {
+        return (
+          <PostCard
+            entry={entry}
+            title={entry.data.title}
+            tags={entry.data.tags}
+            category={entry.data.category}
+            published={entry.data.pubDate}
+            updated={entry.data.updated}
+            url={`/posts/${entry.id}/`}
+            image={entry.data.image.url}
+            description={entry.data.description}
+            class:list="onload-animation"
+          />
+        );
+      }
+    )
+  }
+</div>

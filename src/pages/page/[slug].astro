@@ -1,23 +1,36 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Pagination from "@/components/Pagination.astro";
 import Posts from "@/components/Posts.astro";
 import TwinklingStars from "@/components/TwinklingStars.astro";
 import MeteorShower from "@/components/MeteorShower.astro";
 import HeroText from "@/components/HeroText.astro";
-import Pagination from "@/components/Pagination.astro";
 import { getSortedPosts } from "@utils/content-utils";
 
-const pageTitle = "首頁";
+export async function getStaticPaths() {
+  const posts = await getSortedPosts();
+  const totalPages = Math.ceil(posts.length / 5);
+  const paths = [];
 
-const pagination = 5;
+  for (let i = 1; i < totalPages; i++) {
+    paths.push({
+      params: {
+        slug: (i + 1).toString(),
+      },
+    });
+  }
+  return paths;
+}
 
+const { slug } = Astro.params;
 const posts = await getSortedPosts();
-
-const totalPages = Math.ceil(posts.length / pagination);
-const currentPosts = posts.slice(0, pagination);
+const totalPages = Math.ceil(posts.length / 5);
+const currentPage = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
+const indexOfLastPost = currentPage * 5;
+const indexOfFirstPost = indexOfLastPost - 5;
+const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 ---
-
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle="首頁">
   <!-- Light Mode: Particles -->
   <div class="absolute inset-0 block dark:hidden">
     <div id="particles1" class="fixed inset-0"></div>
@@ -63,9 +76,8 @@ const currentPosts = posts.slice(0, pagination);
       </div>
     </div>
     <div class="animate absolute top-24 p-4 sm:p-20 md:p-24 w-full mx-auto">
-      <h2 class="text-center text-3xl md:text-4xl my-8 font-bold">最新文章</h2>
       <Posts posts={currentPosts} />
-      <Pagination currentPage={1} totalPages={totalPages} />
+      <Pagination totalPages={totalPages} currentPage={currentPage} />
     </div>
   </div>
 </BaseLayout>
