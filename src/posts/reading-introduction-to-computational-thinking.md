@@ -6,7 +6,7 @@ pubDate: 2025-04-15
 image:
   url: "/introduction-to-computational-thinking.png"
   alt: "cover picture"
-tags: ["Reading", "Thinking"]
+tags: ["Read & Think"]
 draft: false
 ---
 ## 前言

@@ -6,7 +6,7 @@ pubDate: 2025-04-29
 image:
   url: "/gpt-second-brain.png"
   alt: "cover picture"
-tags: ["Reading", "Thinking"]
+tags: ["Read & Think"]
 draft: false
 ---
 
