@@ -2,8 +2,8 @@ import type { Site, Page, Links, Socials } from "@types";
 
 // Global
 export const SITE: Site = {
-  TITLE: "江森的前端研究室",
-  DESCRIPTION: "前端、網頁開發，還有一些技術鑽研雜感的分享",
+  TITLE: "Tactical Coder",
+  DESCRIPTION: "Tactical X Coding",
   AUTHOR: "江森",
 };
 
@@ -36,9 +36,9 @@ export const LINKS: Links = [
 ];
 
 export const HERO_WORDS = [
-  { text: "開發", imgPath: "/code.svg" },
-  { text: "想法", imgPath: "/ideas.svg" },
-  { text: "概念", imgPath: "/concepts.svg" },
+  { text: "Code", imgPath: "/code.svg" },
+  { text: "Idea", imgPath: "/ideas.svg" },
+  { text: "", imgPath: "/concepts.svg" },
   { text: "設計", imgPath: "/designs.svg" },
   { text: "開發", imgPath: "/code.svg" },
   { text: "想法", imgPath: "/ideas.svg" },

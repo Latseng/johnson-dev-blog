@@ -9,20 +9,17 @@ for (let i = 1; i <= totalPages; i++) {
   pageList.push(i);
 }
 ---
+
 {
   totalPages > 1 && (
     <nav
-      class="mb-4 flex justify-center space-x-2 text-center"
+      class="my-16 flex justify-center space-x-2 text-center"
       aria-label="Pagination"
     >
       {/* previous */}
       {hasPrevPage ? (
         <a
-          href={
-            indexPageLink
-              ? "/"
-              : `/page/${currentPage - 1}`
-          }
+          href={indexPageLink ? "/" : `/page/${currentPage - 1}`}
           class="border border-primary hover:bg-primary hover:text-white hover:bg-slate-300 rounded-md h-10 w-10 leading-[36px] font-semibold text-dark flex items-center justify-center transition duration-200"
         >
           <span class="sr-only">Previous</span>
@@ -64,17 +61,13 @@ for (let i = 1; i <= totalPages; i++) {
         pagination === currentPage ? (
           <span
             aria-current="page"
-            class={`border border-primary bg-primary rounded-md h-10 w-10 leading-[35px] font-semibold `}
+            class={`border text-white bg-gray-500 border-primary bg-primary rounded-md h-10 w-10 leading-[35px] font-semibold `}
           >
             {pagination}
           </span>
         ) : (
           <a
-            href={
-              i === 0
-                ? "/" 
-                : `/page/${pagination}`
-            }
+            href={i === 0 ? "/" : `/page/${pagination}`}
             aria-current="page"
             class={`border border-primary hover:bg-primary hover:text-white hover:bg-slate-300 rounded-md h-10 w-10 leading-[36px] text-dark flex items-center justify-center transition duration-200`}
           >

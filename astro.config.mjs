@@ -6,12 +6,19 @@ import { remarkReadingTime } from "./remark-reading-time.mjs";
 
 import icon from 'astro-icon';
 
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://johnson-dev.netlify.app",
   integrations: [tailwind(), mdx(), icon()],
   markdown: {
-    remarkPlugins: [remarkReadingTime],
+    remarkPlugins: [remarkReadingTime, remarkMath],
+    // 數學符號設定
+    rehypePlugins: [
+      rehypeKatex,
+    ],
   },
   vite: {
     assetsInclude: ["**/*.yaml"],

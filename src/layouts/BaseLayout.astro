@@ -2,39 +2,39 @@
 import BackToTop from "@components/BackToTop.astro";
 import Header from "../components/Header.astro";
 const { pageTitle } = Astro.props;
-import "../styles/global.css"
-import { SITE } from "@consts"
+import "../styles/global.css";
+import { SITE } from "@consts";
+import "katex/dist/katex.min.css";
 ---
 
 <html lang="zh-Hant-TW">
   <head>
     <meta charset="utf-8" />
-		<link rel="favicon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
+    <link rel="favicon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
     <meta name="description" content={SITE.DESCRIPTION} />
-		<title>{`${pageTitle} | ${SITE.TITLE}`}</title>
+    <title>{`${pageTitle} | ${SITE.TITLE}`}</title>
   </head>
   <body class="dark:bg-black dark:text-white/75 text-black/75">
     <Header />
     <main class="animate">
       <slot />
     </main>
-     <BackToTop />
+    <BackToTop />
   </body>
   <script>
     function animate() {
-  const animateElements = document.querySelectorAll(".animate");
+      const animateElements = document.querySelectorAll(".animate");
 
-  animateElements.forEach((element, index) => {
-    setTimeout(() => {
-      element.classList.add("show");
-    }, index * 150);
-  });
-}
+      animateElements.forEach((element, index) => {
+        setTimeout(() => {
+          element.classList.add("show");
+        }, index * 150);
+      });
+    }
 
-document.addEventListener("DOMContentLoaded", animate);
-document.addEventListener("astro:after-swap", animate);
-
+    document.addEventListener("DOMContentLoaded", animate);
+    document.addEventListener("astro:after-swap", animate);
   </script>
 </html>
