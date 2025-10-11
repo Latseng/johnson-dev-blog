@@ -2,7 +2,7 @@
 title: '變成大叔後才開始的數理人生'
 author: 江森
 description: ''
-pubDate: 2025-09-27
+pubDate: 2025-10-12
 image:
       url: '/nextjs-firebase-auth.png'
       alt: 'cover picture'
