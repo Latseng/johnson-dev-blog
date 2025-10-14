@@ -3,7 +3,7 @@ import PostComments from "@components/PostComments.astro";
 import BaseLayout from "./BaseLayout.astro";
 import PageViews from "@components/PageViews.astro";
 
-import { Icon } from 'astro-icon/components'
+import TableOfContents from "@components/TableOfContents.astro";
 
 const pageUrl = new URL(Astro.url.pathname, Astro.url.origin).href;
 const { frontmatter, readingTime, headings } = Astro.props;
@@ -44,21 +44,7 @@ const { frontmatter, readingTime, headings } = Astro.props;
         </p>
       ))}
       </div>
-      <div class="fixed top-20 left-4 space-y-1">
-        <button id="dropdownButton" class="text-sm p-2 bg-slate-50 border rounded-lg opacity-40 hover:opacity-100">目錄  <Icon class="inline" name="material-symbols:keyboard-arrow-down" ></Icon></button>
-        <div id="dropdownMenu" class="border px-4 bg-slate-100 hidden">
-         <p class="text-base text-center font-semibold">文章目錄</p>
-           <nav>
-             <ul class="text-sm space-y-4">
-              {headings.map((item: { slug: string; text: string; }) => (
-               <li>
-                <a href={`#${item.slug}`}>{item.text}</a>
-               </li>
-              ))}
-            </ul>
-           </nav>
-        </div>
-      </div>
+      <TableOfContents headings={headings} />
       <hr />
       <div>
         <slot />
