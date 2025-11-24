@@ -4,7 +4,7 @@ author: 江森
 description: '在當今的專業技術領域，大家都說技術不是重點，解決問題的能力才是，那什麼是解決問題的能力？'
 pubDate: 2025-11-02
 image:
-      url: '/nextjs-firebase-auth.png'
+      url: '/problem-solving.png'
       alt: 'cover picture'
 tags: ["Read & Think"]
 draft: false

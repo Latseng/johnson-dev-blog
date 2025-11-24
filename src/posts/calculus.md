@@ -2,9 +2,9 @@
 title: "成為大叔後又繼續的數理之路：半路出家的微積分入門"
 author: 江森
 description: "轉生成大叔（？）誤打誤撞開啟了先前中斷的數理學習之路"
-pubDate: 2025-10-25
+pubDate: 2025-10-11
 image:
-  url: "/nextjs-firebase-auth.png"
+  url: "/derivatives.png"
   alt: "cover picture"
 tags: ["Read & Think"]
 draft: false
