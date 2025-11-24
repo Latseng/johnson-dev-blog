@@ -1,0 +1,14 @@
+[build]
+  command = "pnpm build"
+  publish = "dist"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+  
+[dev]
+  framework = "#custom"
+  command = "pnpm astro dev"
+  targetPort = 4321
+  port = 8888
+  autoLaunch = false
