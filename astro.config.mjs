@@ -18,9 +18,6 @@ export default defineConfig({
   },
   vite: {
     assetsInclude: ["**/*.yaml"],
-    optimizeDeps: {
-      exclude: ["deno.lock"],
-    },
     build: {
       rollupOptions: {
         external: ["fsevents"],
