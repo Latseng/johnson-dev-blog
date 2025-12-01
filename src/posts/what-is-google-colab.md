@@ -7,7 +7,7 @@ image:
       url: '/colab/colab.png'
       alt: 'cover picture'
 tags: ["I Wish I Knew This Earlier"]
-draft: true
+draft: false
 ---
 很多剛開始接觸寫程式的新手小白，遇到的第一個難關，我想不是卡在：該如何讓電腦複誦你的 Hello World！。
 
