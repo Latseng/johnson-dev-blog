@@ -1,0 +1,116 @@
+---
+title: '【早點知道就好了】Google Colab是什麼？'
+author: 江森
+description: 'Python 開發必用的 Google 本家服務'
+pubDate: 2025-12-01
+image:
+      url: '/colab/colab.png'
+      alt: 'cover picture'
+tags: ["I Wish I Knew This Earlier"]
+draft: true
+---
+很多剛開始接觸寫程式的新手小白，遇到的第一個難關，我想不是卡在：該如何讓電腦複誦你的 Hello World！。
+
+應該大多是在環境設定上就被勸退。
+
+如果是JavaScript，還能在瀏覽器內的開發者工具console，開始你的Hello World。
+
+但其他程式語言，在開始編寫你那五彩繽紛的程式碼咒語前，都需要經過一連串的繁瑣步驟：下載與安裝編譯器、設定路徑與環境變數等。
+
+通常還沒開始體驗到使用咒語操控電腦的成就感，就會先被環境設定一頓暴打。我覺得有點像兵役的新訓，還沒搞清楚狀況就先經歷一番「洗禮」，才剛報到就懷疑人生到想回家了：我是誰？我在幹嘛？我怎麼在這？
+
+雖然有人說：「人生路上踩坑難免，有些坑不踩不會長大」。但我經常會想：有些坑要是能避開、少繞一些彎路的話，我是不是就能有更多、更豐富的成就呢？
+
+因此身為待過執法戰術單位的開發者，筆者想藉由這個：「早點知道就好了」系列，分享一些tips，讓你可以踩著筆者「槌心肝」（台語：懊悔、憤恨的心情）的過往血淚，避開一些坑，少走一點彎路，成就更多！
+
+## Google Colab 是什麼？
+
+![Google Colab logo](/colab/colab-logo.png)
+
+Google Colab（全稱為：Google Colaboratory），這是個讓你不用煩惱環境設定，就可以在線上編寫程式碼的 Google 服務，主要用來進行數據分析、機器學習等，Python的主流應用。
+
+## 為什麼要用Google Colab？
+
+### Google 本家
+
+我想現在應該很少人會沒有Google帳號吧？
+
+上網三神器：Google Search、Gmail、YouTube（近期還要再加個Gemini）是現代人每天的日常良伴。（沒錯吧？）
+
+既然你有在用 Google 服務，那就可以無痛開始 Google Colab，因為它就是 Google 的親兒子之一，深度整合在 Google 生態系當中，只要你有 Google 帳號就可以直接使用。
+
+雖然其他的線上程式編寫平台，例如：CodePen（主要For網頁前端）、Replit（支援大部分的主流的程式語言），也可以讓你在線上寫程式，但還要另外註冊帳號，而且還得再搞熟悉他們的操作介面。
+
+除非你有特別的偏好，既然你都有 Google 帳號了，也每天都在用 Google 的服務了，那從 Google Colab 開始也是相當自然的一件事。
+
+### 免費算力
+
+Colab 讓你可以蹭地表最強科技公司之一 Google 的運算資源。
+
+Python 在 AI 相關的應用，相當吃電腦的運算效能。
+
+Google 佛心提供免費的 GPU / TPU 運算力，讓你可以無負擔進行時下熱門的機器學習與數據科學實驗。
+
+雖然免費額度有上限（想要更多算力的話，就得靠你的魔法小卡了），但對於剛開始入門 Python 的新手，或只是想嘗試AI相關的開發，甚至你只是想測試一些小構想時，從Colab開始就是個相當理想的選擇。
+
+### 互動與教學
+
+Google Colab是基於 Jupyter Notebook 的雲端平台。
+
+我知道你會問：什麼是 Jupyter Notebook？
+
+Jupyter Notebook 是一個開源的 Web 應用程式，它可以讓你創建和分享程式碼、數學方程式、視覺化圖表和敘述性的文字註釋的文件（也就是「筆記本」的概念）。
+
+Jupyter Notebook 創建的檔案，會以 <mark>.ipynb</mark> 為副檔名儲存。
+
+從副檔名就可以看出是 Python 的筆記本形式，當然也可以運行Python程式碼。雖然也能運行其他的程式語言，但主流應用還是Python。
+
+一個 Jupyter Notebook 檔案，你可以在裡面創建多個 cell ，一個 cell 可以是：
+
+- 一段程式碼（code cell）：你可以撰寫Python程式碼的片段。
+- 一段採用 Markdown 格式的說明文字（Markdown cell）：讓你可以撰寫格式化的說明、筆記、註釋或是數學方程式。
+
+由於上述的特性，Jupyter Notebook 很常應用在教學與學術研究上。
+
+而Google Colab就是它的雲端版本。
+
+## 如何開始？
+
+你可以從 https://colab.google 這段 URL 進入 Google Colab 的主頁，並依照頁面的引導開始建立你的 Colab 筆記本。
+
+![Google Colab主頁](/colab/colab-main.png)
+
+Open Colab 是打開你已經建立的 notebook，或是點選 New Notebook 來創建新的筆記本。
+
+
+筆者相當常用的路徑如下：
+
+1. 來到 Google雲端硬碟
+
+![從 Google Drive 建立 Colab](/colab/google-drive.png)
+
+2. 旁邊的＋新增按鈕，選擇 -> 更多 -> Google Colaboratory 就能建立一個新的筆記本檔案
+
+3. 新建的 Colab 筆記本，可以在上方處重新命名檔案
+
+![New Colab](/colab/open-colab.png)
+
+我們可以看到中間的主要區塊，左方有播放 icon 的欄位就是一個已經預先建立好的 cell。
+
+右邊的「版本資訊」欄位，你若是覺得會干擾，可以先點擊右上角的 X 關閉。
+
+你可以開始在 Cell 裡面撰寫 Python 程式碼，左邊的播放 icon 可以執行你的程式碼。
+
+然後 Colab 的最下方還有 Gemini 的對話框，我想到了這裡，你應該可以開始盡情做你想做的嘗試了（畢竟有問題，已經有Gemini在待命了）。
+
+## 結語
+
+Google Colab 是個相當方便的工具，身為 Google 本家的服務，你在自己的Google雲端硬碟就能建立、管理自己的 Colab，而且數據分析與機器學習的相關套件都已經預載好，不需要額外再設定就能直接開始。
+
+Googel 提供的一些教學資源也會直接給你 Calob 的筆記範例，讓你可以在自己的雲端硬碟建立副本嘗試。
+
+而且近期 Google 另一個相當火紅的服務：Gemini，你也能在 Colab 中串接它的API，打造 AI 相關的應用。
+
+筆者就有嘗試在 Colab 內使用 Gemini 的 API，側邊欄就能直接加入Key到環境變數，你不會用Gemini SDK 下面還有待命中 Gemini 可以讓你問，讓 Gemini 協助你完成它自己的應用（？）
+
+如果你剛接觸Python，想了解 AI 相關的開發運用，一定不能錯過 Google Colab。

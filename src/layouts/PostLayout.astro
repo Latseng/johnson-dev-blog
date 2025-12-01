@@ -1,7 +1,6 @@
 ---
 import PostComments from "@components/PostComments.astro";
 import BaseLayout from "./BaseLayout.astro";
-import PageViews from "@components/PageViews.astro";
 
 import TableOfContents from "@components/TableOfContents.astro";
 
@@ -58,8 +57,6 @@ if (!slug) {
       </span>
       <span class="mx-1">|</span>
       <span>閱讀時間：{readingTime}</span>
-      <span class="mx-1">|</span>
-      <PageViews slug={slug} />
     </div>
     <img
       class="mx-auto border border-slate-600"
