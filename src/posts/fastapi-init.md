@@ -1,0 +1,213 @@
+---
+title: '從 FastAPI 開始的後端入門'
+author: 江森
+description: '前端起家的我，因為對 Python 感到好奇，不小心點了後端技能樹'
+pubDate: 2025-12-02
+image:
+      url: '/fastapi/fastapi-logo.png'
+      alt: 'cover picture'
+tags: ["Python", "FastAPI"]
+draft: false
+---
+## 前言
+
+筆者是從前端起家進入開發領域，寫了一陣子的前端後，突然對時常在打交道的後端感到好奇。
+
+如果想從前端延伸接觸後端的話，那麼從原先就在使用的 JavaScript 跨入（Express.js、Nest.js之類的），似乎是個相當合理的選項。
+
+但是筆者近期被AI燒到，開始對隔壁棚的 Python 也相當好奇，所以就想說：不然就從後端開始認識 Python 好了！
+
+於是筆者開始研究起 Python 的後端，Python 主流的 Web 框架有Django（筆者註：D不發音，唸法類似「漿果」，筆者剛認識它的時候唸成「D漿果」，後來發現唸錯，尷尬到印象很深刻）、Flask、FastAPI 三種可供選擇。
+
+首先是 Django，筆者稍作研究後發現，Django 是個全面性的網站框架。
+
+有著相對完整的開發工具，對於喜歡一套打天下的開發者來說，Django 提供的解決方案是個相當不錯的選擇，但與 Flask 與 FastAPI 比起來就沒那麼多彈性。
+
+由於解決方案的完整度較高，所以 Django 跟另外兩者的學習曲線比起來高。
+
+筆者只是想一窺後端的運作，順帶認識一下隔壁棚相當火熱的 Python，所以 Django 先被筆者淘汰。
+
+接著是 Flask 與 FaskAPI 的比較，~~筆者私心認為FastAPI的 Logo 有夠酷，所以優先淘汰 Flask。~~
+
+Flask是個輕量級、極簡且靈活的後端框架，入門的學習曲線是三者中最低的。
+
+~~筆者私心喜愛 FastAPI 的Logo，~~
+但FastAPI有以下特點讓筆者最後選擇它作為跨入後端的起點：
+
+## FastAPI特點
+
+### 名詞術語
+在了解 FastAPI 的特色之前，筆者先整理一些，先釐清會比較容易了解接下來在幹嘛的技術名詞（術語、黑話、whatever）：
+#### FastAPI
+Python的後端框架之一，本回的主角。
+#### Uvicorn
+FastAPI 的標配之一，非同步的網站伺服器。
+
+由於 FastAPI 的本體為 Python 應用程式，所以需要依賴 Uvicorn 讓 FastAPI 可以進行監聽 Port、解析協議（TCP/IP連線、HTTP）等伺服器行為。
+#### Starlette
+FastAPI 的標配之一，實現非同步處理的函式庫。
+
+從前端起家的筆者，因此曾經在 JavaScript 的非同步特性上卡關，所以對這個概念印象蠻深刻的，想不到會在這裡再次看到，而且發現到原來 Python 不具備非同步的特性。
+
+簡單來說，非同步的意思就是並行處理的概念。
+
+想像一下如果只有一個窗口在處理工作，當多個工作同時進來時，就必須排隊，就像我們去銀行、郵局辦事，或是到診所看診排號碼，等叫號才輪到你那樣，這就是同步處理。
+
+非同步就像開多個窗口，如果同時間有多個工作進來時，這些工作就可以分開平行處理，因此消耗排隊的速度就會快很多。
+### Pydantic
+FastAPI 的標配之一，資料驗證工具，確保資料交換有依照定義好的格式。避免資料格式、型別亂用，造成不可預期的錯誤。
+
+接下來介紹 FastAPI 的特色：
+### 高速
+FastAPI 號稱是 Python 網站框架中速度最快的。
+
+FastAPI 採用非同步伺服器閘道介面（Asynchronous Server Gateway Interface, ASGI），這個看起來很炫炮的術語是幹嘛用？
+
+相對於 Python 的其他網站框架大多只採用網站伺服器閘道介面（Web Server Gateway Interface, WSGI），ASGI由於非同步的特性，可以並行處理許多操作請求。
+
+也就說，配備這個炫砲的東西，FastAPI 可以讓許多工作一起進行，不用一個一個排隊。這也讓 FastAPI 相較於 Python 的其他網站框架速度更快，並且更能處理高併發的情況。
+### 驗證資料格式
+FastAPI 內建 Pydantic。提供資料驗證、序列化和類型提示支援。
+### 自動產生API文件
+FastAPI 內建 Swagger UI，自動在運行後會產生API文件，並且可供開發者測試API。
+### 易上手與使用
+號稱是目前開發者體驗（DX）最好的 Python 框架之一。
+
+由於是輕量級的框架，所以沒有太多獨有的語法要學。而且官方的說明文件清楚，自動生成 API 文件功能真的很神（筆者有被這個功能嚇到XD），還內建易用的資料驗證工具。
+
+再加上與 JavaScript 的非同步特性，讓筆者從前端跨入使用時，有股熟悉的親切感（被非同步概念虐過的既視感？）。
+## 初始化專案
+
+Python 安裝套件的基本方法是使用 pip，所以[官方](https://fastapi.tiangolo.com/#installation)目前推薦的安裝方式為：
+```shell
+pip install "fastapi[standard]"
+```
+但筆者在摸過幾個 Python 專案後發現，最近 Python 開發的主流大多會採用 uv 作為專案管理工具。
+
+它有一些相當棒的特點，讓筆者最近開始在 Python 開發中改用 uv。
+
+介紹一下 uv：
+
+uv 是由 Astral 團隊所開發，以 Rust 語言編寫的 Python 套件管理器和環境管理器。
+
+它旨在取代傳統的 `pip`、`venv` 等工具，提供更快的套件安裝速度（比 `pip` 快 10-100 倍），並且讓套件、虛擬環境以及 Python 版本管理等專案設定更方便。 
+
+uv 帶來以下優勢：
+- **速度快**：使用 Rust 的效能優勢和智慧全域快取，套件解析和安裝速度比傳統工具快得多。
+- **功能整合**：一個工具即可完成套件安裝、虛擬環境建立和 Python 版本管理等任務，大幅簡化工作流程。
+- **易於使用**：提供簡化的指令，讓開發者能用簡單明瞭的指令完成常用的操作。
+
+若你已經建立好並進入專案資料夾，可以使用以下指令：
+```shell
+uv init
+uv add "fastapi[standard]"
+```
+若還沒建立專案資料夾：
+```shell
+uv init [取你想要的專案資料夾名稱]
+cd [你的專案資料夾]
+uv add "fastapi[standard]"
+```
+初始化完成後的專案資料夾，結構會是這樣：
+
+```
+fastapi-demo/ 
+├── .venv/ # uv 自動管理的虛擬環境 
+├── .gitignore
+├── .python-version # 指定 Python 版本 
+├── pyproject.toml # 專案配置與依賴清單 
+├── uv.lock # 精確的版本鎖定檔 (類似 poetry.lock) 
+├── main.py # fastapi的主程式 
+└── README.md
+```
+
+接著在main.py。我們來完成一個初步的後端端點：
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI() # 初始化的FastAPI物件
+
+@app.get("/") # 路徑裝飾器，讓FastAPI將對此伺服器上的"/"請求導到以下函式
+def index():
+    return "Hello World!"
+```
+筆者簡單介紹一下，以上程式碼在幹嘛：
+
+1. app = FastAPI() ➡️ 初始化的FastAPI物件，一定要做這個動作，不然啟動伺服器時會找不到運行實體。
+2. @app.get("/") ➡️ 路徑裝飾器，讓FastAPI將對此伺服器上的"/"請求導到以下函式，我們還能看出這裡允許 GET 請求。
+3. def index() ➡️ 路徑函式（path function），負責處理 HTTP 請求和回應。
+
+接著，來運行專案測試看看：
+
+```shell
+uv run fastapi dev main.py
+```
+使用瀏覽器，在URL欄位中輸入：
+http://127.0.0.1:8000
+就能連到運行中的FastAPI Server囉！
+
+![FastAPI：Hello World](/fastapi/hello-world.png)
+
+想停止運行專案的話，只要在運行的終端機命列中，直接按下 control＋c 即可。
+
+### 動態路由
+#### 路徑參數
+
+了解了上述概念後，我們來測試一個新的路由如下：
+```python
+@app.get("/hi/{name}")
+def greet_to_user(name):
+    return f"Hello! {name}"
+```
+
+前端希望從 hi 的目錄中，藉由傳入的 name 指定路由（動態路由）進一步查找相符的資源。
+
+#### 查詢參數
+
+從前端瀏覽器發出的請求，有些會在請求的URL中附帶query string，就像這樣：
+<mark>http://主機名稱/search名稱?參數名稱=指定資料&第二個參數名稱=第二個指定資料&...</mark>
+
+在 FastAPI 我們可以這樣設計路由來處理：
+```python
+@app.get("/hi")
+def search_string(name, age):
+    age = int(age)
+    greeting_message = "哈囉" + name
+    
+    if age >= 18:
+        greeting_message = greeting_message + "你可以訪問本站"
+    else:
+        greeting_message = greeting_message + "你還是可以訪問本站"
+
+    return greeting_message
+```
+測試結果：
+![查詢參數測試結果1](/fastapi/query-str1.png)
+![查詢參數測試結果2](/fastapi/query-str2.png)
+
+
+我們可以觀察到，跟路徑參數不同的點在於，裝飾器並沒有方入變數，只有定義在函式中。
+
+精明的你應該有發現 <mark>age = int(age)</mark> 這一段。
+
+由於從 URL 的 query string 必定為字串，因此必須做型別轉換，才能繼續進行相應的處理，在本例中必須先轉換成整數後，才能進入流程判斷。
+
+## 自動化文件
+如果你的專案正在運行中，而且是運行在：http://127.0.0.1:8000 的話，FastAPI有個神奇的功能是，它會在 http://127.0.0.1:8000/docs 自動生成 API 文件，並且讓你在瀏覽器中，測試API端點：
+
+1. 目前為止的 API 端點
+![FastAPI doc1](/fastapi/current-api.png)
+2. 測試其中一個 API 端點（端點需要帶入參數的話，可以在 Parameter 的欄位輸入）
+![FastAPI doc2](/fastapi/try-api1.png)
+3. 下方查看 API 測試結果
+![FastAPI doc3](/fastapi/try-api2.png)
+
+## 結語
+本回分享了引誘筆者跨入後端 Python 框架－FastAPI。
+
+筆者初步實作下來的開發體驗真的相當不錯，而且很有趣（？）。
+
+尤其是它那令人驚奇的自動化生成文件功能。
+
+總之筆者會在持續探究及分享 FastAPI 的功能，聽說它能夠結合 AI 相關的開發，真的是相當期待發掘更多 FastAPI 的應用。
