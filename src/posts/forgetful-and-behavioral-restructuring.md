@@ -4,7 +4,7 @@ author: 江森
 description: ''
 pubDate: 2025-10-07
 image:
-      url: '/forgetful-and-behavioral-restructuring.png'
+      url: 'forgetful-and-behavioral-restructuring_wlpxt1'
       alt: 'cover picture'
 tags: ["Read & Think"]
 draft: false

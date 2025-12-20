@@ -4,7 +4,7 @@ author: 江森
 description: "不只是Coding，學習寫程式背後的思維方法"
 pubDate: 2025-04-15
 image:
-  url: "/introduction-to-computational-thinking.png"
+  url: "introduction-to-computational-thinking_spaohv"
   alt: "cover picture"
 tags: ["Read & Think"]
 draft: false

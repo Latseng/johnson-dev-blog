@@ -4,7 +4,7 @@ author: 江森
 description: "只有你親手做的筆記，才會為你帶來最大的價值"
 pubDate: 2025-10-11
 image:
-  url: "/gpt-second-brain.png"
+  url: "build-second-brain_kx4ne8"
   alt: "cover picture"
 tags: ["Read & Think"]
 draft: false

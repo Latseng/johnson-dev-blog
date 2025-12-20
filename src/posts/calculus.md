@@ -2,13 +2,14 @@
 title: "成為大叔後又繼續的數理之路：半路出家的微積分入門"
 author: 江森
 description: "轉生成大叔（？）誤打誤撞開啟了先前中斷的數理學習之路"
-pubDate: 2025-10-11
+pubDate: 2025-10-01
 image:
-  url: "/derivatives.png"
+  url: "derivatives_lojnvk"
   alt: "cover picture"
 tags: ["Read & Think"]
 draft: false
 ---
+import { CldImage } from 'astro-cloudinary';
 
 ## 有點碎念的前言
 
@@ -98,9 +99,7 @@ draft: false
 
 它的公式可以寫成像下面這樣的：
 
-$$
-\bar{v} = \frac{\Delta x}{\Delta t}
-$$
+$$\bar{v} = \frac{\Delta x}{\Delta t}$$
 
 畫成函數圖形來看會更清楚：
 

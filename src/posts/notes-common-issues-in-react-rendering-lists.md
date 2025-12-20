@@ -4,7 +4,7 @@ author: 江森
 description: "React筆記、心得、踩雷經驗談"
 pubDate: 2024-11-11
 image:
-  url: "https://res.cloudinary.com/dsxtz8rud/image/upload/v1733738728/react-learning_p56kbm.webp"
+  url: "lautaro-react_pvqjuo"
   alt: "cover picture"
 tags: ["Front-end", "React"]
 draft: false

@@ -4,7 +4,7 @@ author: 江森
 description: 'JavaScript當中，比較難上手的陣列操作方法'
 pubDate: 2025-03-20
 image:
-      url: '/cover-img-javascript.jpg'
+      url: 'lautaro-react_pvqjuo'
       alt: 'cover picture'
 tags: ["JavaScript"]
 draft: false

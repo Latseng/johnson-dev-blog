@@ -4,7 +4,7 @@ author: 江森
 description: "除了渲染以外的DOM操控方法"
 pubDate: 2025-05-04
 image:
-  url: "/lautaro-react.jpg"
+  url: "lautaro-react_pvqjuo"
   alt: "cover picture"
 tags: ["Front-end", "React"]
 draft: false

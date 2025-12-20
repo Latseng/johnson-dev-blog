@@ -4,7 +4,7 @@ author: 江森
 description: "打造你的人生迭代系統"
 pubDate: 2025-04-29
 image:
-  url: "/gpt-second-brain.png"
+  url: "build-second-brain_kx4ne8"
   alt: "cover picture"
 tags: ["Read & Think"]
 draft: false

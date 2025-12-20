@@ -4,7 +4,7 @@ author: 江森
 description: '如何在Next.js專案中使用Firebase實作身份驗證'
 pubDate: 2025-07-07
 image:
-      url: '/nextjs-firebase-auth.png'
+      url: 'nextjs-firebase-auth_jt7syn'
       alt: 'cover picture'
 tags: ["Next.js"]
 draft: false

@@ -20,10 +20,8 @@ export default defineConfig({
       [
         rehypeExternalLinks,
         {
-          target: "_blank", // 設定為在新分頁開啟
-          rel: ["noopener", "noreferrer"], // 重要的安全屬性
-          // 預設情況下，rehype-external-links 只會對外部連結應用這些屬性
-          // 如果要對所有連結都應用，需要額外配置，但對於外部連結，預設行為就是您想要的。
+          target: "_blank",
+          rel: ["noopener", "noreferrer"]
         },
       ],
     ],

@@ -4,7 +4,7 @@ author: 江森
 description: "React心得，useEffect初步使用經驗談"
 pubDate: 2025-01-19
 image:
-  url: "/useEffect-fetch-data.webp"
+  url: "useEffect-fetch-data_zhhe3y"
   alt: "cover picture"
 tags: ["Front-end", "React"]
 draft: false

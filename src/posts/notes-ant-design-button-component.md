@@ -4,7 +4,7 @@ author: 江森
 description: 'Ant Design入門：Button元件'
 pubDate: 2024-11-10
 image:
-      url: 'https://res.cloudinary.com/dsxtz8rud/image/upload/v1733738839/get-start-ui-library-with-ant-design_wgzsio.webp'
+      url: 'ant-design-gpt_ce93sq'
       alt: 'cover picture'
 tags: ["Front-end", "UI-library"]
 draft: false

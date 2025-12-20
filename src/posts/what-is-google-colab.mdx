@@ -4,11 +4,13 @@ author: 江森
 description: 'Python 開發必用的 Google 本家服務'
 pubDate: 2025-12-01
 image:
-      url: '/colab/colab.png'
+      url: 'colab_d55koj'
       alt: 'cover picture'
 tags: ["I Wish I Knew This Earlier"]
 draft: false
 ---
+import { CldImage } from 'astro-cloudinary';
+
 很多剛開始接觸寫程式的新手小白，遇到的第一個難關，我想不是卡在：該如何讓電腦複誦你的 Hello World！。
 
 應該大多是在環境設定上就被勸退。
@@ -25,7 +27,11 @@ draft: false
 
 ## Google Colab 是什麼？
 
-![Google Colab logo](/colab/colab-logo.png)
+<CldImage
+  src="colab-logo_eodrfh" 
+  alt="Google Colab logo"
+  width={360}
+/>
 
 Google Colab（全稱為：Google Colaboratory），這是個讓你不用煩惱環境設定，就可以在線上編寫程式碼的 Google 服務，主要用來進行數據分析、機器學習等，Python的主流應用。
 
@@ -78,22 +84,34 @@ Jupyter Notebook 創建的檔案，會以 <mark>.ipynb</mark> 為副檔名儲存
 
 你可以從 https://colab.google 這段 URL 進入 Google Colab 的主頁，並依照頁面的引導開始建立你的 Colab 筆記本。
 
-![Google Colab主頁](/colab/colab-main.png)
+<CldImage
+  src="colab-main_zrlrmw" 
+  alt="Google Colab主頁"
+  width={720}
+/>
 
 Open Colab 是打開你已經建立的 notebook，或是點選 New Notebook 來創建新的筆記本。
 
 
 筆者相當常用的路徑如下：
 
-1. 來到 Google雲端硬碟
+進入 Google雲端硬碟
 
-![從 Google Drive 建立 Colab](/colab/google-drive.png)
+在旁邊的＋新增按鈕，選擇 -> 更多 -> Google Colaboratory 就能建立一個新的筆記本檔案
 
-2. 旁邊的＋新增按鈕，選擇 -> 更多 -> Google Colaboratory 就能建立一個新的筆記本檔案
+<CldImage
+  src="google-drive_wzjhu3" 
+  alt="從 Google Drive 建立 Colab"
+  width={720}
+/>
 
-3. 新建的 Colab 筆記本，可以在上方處重新命名檔案
+新建的 Colab 筆記本，可以在上方處重新命名檔案
 
-![New Colab](/colab/open-colab.png)
+<CldImage
+  src="open-colab_qagooj" 
+  alt="新建立的Colab"
+  width={720}
+/>
 
 我們可以看到中間的主要區塊，左方有播放 icon 的欄位就是一個已經預先建立好的 cell。
 

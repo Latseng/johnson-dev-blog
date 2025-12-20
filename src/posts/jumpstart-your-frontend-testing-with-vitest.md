@@ -4,7 +4,7 @@ pubDate: 2025-06-04
 description: "在React中使用Vitest撰寫測試"
 author: 江森
 image:
-  url: "/vitest.png"
+  url: "vitest_e7dr90"
   alt: "Cover Picture"
 tags: ["Front-end", "Test", "Vitest"]
 draft: false

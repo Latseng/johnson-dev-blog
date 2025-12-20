@@ -4,7 +4,7 @@ author: 江森
 description: '筆者學習閉包的心得'
 pubDate: 2025-03-31
 image:
-      url: '/cover-img-javascript.jpg'
+      url: 'cover-img-javascript_iewu9o'
       alt: 'cover picture'
 tags: ["JavaScript"]
 draft: false

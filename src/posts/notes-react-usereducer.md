@@ -4,7 +4,7 @@ author: 江森
 description: "只會用useState控制渲染嗎？試試看useReducer吧！"
 pubDate: 2025-04-12
 image:
-  url: "/lautaro-react.jpg"
+  url: "lautaro-react_pvqjuo"
   alt: "cover picture"
 tags: ["Front-end", "React"]
 draft: false

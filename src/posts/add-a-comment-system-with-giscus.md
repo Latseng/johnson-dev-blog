@@ -4,7 +4,7 @@ author: 江森
 description: 'Giscus，基於Github討論功能的擴充外掛'
 pubDate: 2025-03-11
 image:
-      url: '/comment-test.png'
+      url: 'comment-test_gxgxqa'
       alt: 'cover picture'
 tags: ["Front-end"]
 draft: false

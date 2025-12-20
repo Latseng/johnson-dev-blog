@@ -1,10 +1,10 @@
 ---
 import PostComments from "@components/PostComments.astro";
 import BaseLayout from "./BaseLayout.astro";
+import { CldImage } from "astro-cloudinary";
 
 import TableOfContents from "@components/TableOfContents.astro";
 
-const pageUrl = new URL(Astro.url.pathname, Astro.url.origin).href;
 const { frontmatter, readingTime, headings } = Astro.props;
 const slug = Astro.params.slug;
 
@@ -58,10 +58,17 @@ if (!slug) {
       <span class="mx-1">|</span>
       <span>閱讀時間：{readingTime}</span>
     </div>
-    <img
-      class="mx-auto border border-slate-600"
+    <CldImage
       src={frontmatter.image.url}
       alt={frontmatter.image.alt}
+      width={800}
+      height={450}
+      crop={{
+        type: "fit",
+        source: true,
+      }}
+      format="auto"
+      quality="auto"
     />
     <div class="flex">
       {

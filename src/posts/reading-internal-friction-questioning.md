@@ -4,7 +4,7 @@ author: 江森
 description: '開發者依靠理性、專注在邏輯來完成工作，但別忘了關注一下自己，還有這個不理性的世界'
 pubDate: 2025-08-01
 image:
-      url: '/internal-friction-questioning.png'
+      url: 'internal-friction-questioning_mv6eyr'
       alt: 'cover picture'
 tags: ["Read & Think"]
 draft: false

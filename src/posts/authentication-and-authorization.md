@@ -4,9 +4,9 @@ author: 江森
 description: '水很深，但程式開發者一定要了解的議題'
 pubDate: 2025-07-04
 image:
-      url: '/auth.jpg'
+      url: 'auth_fho44i'
       alt: 'cover picture'
-tags: ["Front-end"]
+tags: ["Front-end", "Back-end"]
 draft: false
 ---
 ## 前言

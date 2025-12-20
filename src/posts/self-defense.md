@@ -4,7 +4,7 @@ author: 江森
 description: '分享書之外，還想來談談筆者過去的工作經驗'
 pubDate: 2025-10-14
 image:
-      url: '/self-defense.png'
+      url: 'self-defense_rhbeos'
       alt: 'cover picture'
 tags: ["Tactical Life", "Read & Think"]
 draft: false
