@@ -100,8 +100,23 @@ if (!slug) {
         ))
       }
     </div>
+    <div
+      class="border px-4 md:mx-12 md:px-8 text-sm md:text-lg bg-slate-100 dark:bg-slate-500"
+    >
+      <p class="text-center font-semibold">文章目錄</p>
+      <nav>
+        <ul class="space-y-4">
+          {
+            headings.map((item: { slug: string; text: string }) => (
+              <li>
+                <a href={`#${item.slug}`}>{item.text}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
     <TableOfContents headings={headings} />
-    <hr />
     <div>
       <slot />
     </div>
@@ -110,11 +125,17 @@ if (!slug) {
 </BaseLayout>
 
 <script>
-  const dropdownButton = document.querySelector("#dropdownButton");
-  const dropdownMenu = document.querySelector("#dropdownMenu");
-  function toggleDropdown() {
-    dropdownMenu?.classList.toggle("hidden");
-  }
+  const target = document.getElementById("dynamic-toc");
 
-  dropdownButton?.addEventListener("click", toggleDropdown);
+  if (target) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 1000) {
+        target.classList.remove("hidden");
+
+      } else {
+
+        target.classList.add("hidden")
+      }
+    });
+  }
 </script>

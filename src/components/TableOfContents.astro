@@ -1,18 +1,55 @@
 ---
-import { Icon } from "astro-icon/components";
-
 const { headings } = Astro.props;
 ---
 
-<div class="fixed top-20 left-4 space-y-1">
+<div id="dynamic-toc" class="fixed top-20 left-4">
   <button
     id="dropdownButton"
-    class="text-sm p-2 text-gray-700 bg-slate-50 border rounded-lg opacity-40 hover:opacity-100"
-    >目錄 <Icon
-      class="inline"
-      name="material-symbols:keyboard-arrow-down"
-    /></button
-  >
+    class="text-base p-2 flex gap-1 items-center text-gray-700 bg-slate-50 border opacity-30 hover:opacity-100"
+    aria-label="Open menu"
+    ><svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="lucide lucide-table-of-contents-icon lucide-table-of-contents"
+      ><path d="M16 5H3"></path><path d="M16 12H3"></path><path d="M16 19H3"
+      ></path><path d="M21 5h.01"></path><path d="M21 12h.01"></path><path
+        d="M21 19h.01"></path></svg
+    ><svg
+      id="dropdown-open-icon"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="size-4"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="m4.5 15.75 7.5-7.5 7.5 7.5"></path>
+    </svg>
+    <svg
+      id="dropdown-close-icon"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="size-4 hidden"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="m19.5 8.25-7.5 7.5-7.5-7.5"></path>
+    </svg>
+  </button>
   <div
     id="dropdownMenu"
     class="border px-4 bg-slate-100 dark:bg-slate-500 hidden"
@@ -31,3 +68,40 @@ const { headings } = Astro.props;
     </nav>
   </div>
 </div>
+
+<script>
+  const dropdownButton = document.querySelector("#dropdownButton");
+  const dropdownMenu = document.querySelector("#dropdownMenu");
+  const menuIcon = document.querySelector<HTMLOrSVGImageElement>(
+    "#dropdown-open-icon"
+  );
+  const closeIcon = document.querySelector<HTMLOrSVGImageElement>(
+    "#dropdown-close-icon"
+  );
+  let isDropdownMenuOpen = false;
+
+  const toggleDropdownMenu = () => {
+    isDropdownMenuOpen = !isDropdownMenuOpen;
+    dropdownMenu?.classList.toggle("hidden");
+    menuIcon?.classList.toggle("hidden", isDropdownMenuOpen);
+    closeIcon?.classList.toggle("hidden", !isDropdownMenuOpen);
+    dropdownButton?.classList.toggle("opacity-40", !isDropdownMenuOpen);
+    dropdownButton?.setAttribute(
+      "aria-label",
+      isDropdownMenuOpen ? "Close menu" : "Open menu"
+    );
+  };
+
+  dropdownButton?.addEventListener("click", toggleDropdownMenu);
+
+  window.addEventListener("click", (event) => {
+    const target = event.target as Node;
+    if (
+      isDropdownMenuOpen &&
+      !dropdownMenu?.contains(target) &&
+      !dropdownButton?.contains(target)
+    ) {
+      toggleDropdownMenu();
+    }
+  });
+</script>

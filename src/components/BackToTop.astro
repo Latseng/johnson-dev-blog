@@ -1,50 +1,61 @@
 ---
+
 ---
 
 <button
   id="back-to-top"
-  class="fixed md:bottom-8 md:right-8 p-2 rounded-full border border-gray-200 text-gray-300 dark:border-gray-600 dark:text-gray-600 hover:text-gray-400 hover:border-gray-400 shadow-xl transition-all duration-300 opacity-0 invisible"
+  class="fixed bottom-6 right-6 md:bottom-8 md:right-8 p-2 rounded-full border border-gray-200 text-gray-300 dark:border-gray-600 dark:text-gray-600 hover:text-gray-400 hover:border-gray-400 shadow-xl transition-all duration-300 opacity-0 invisible"
   aria-label="Back to top"
 >
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 18.75 7.5-7.5 7.5 7.5" />
-  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 7.5-7.5 7.5 7.5" />
-</svg>
-
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="currentColor"
+    class="size-6"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="m4.5 18.75 7.5-7.5 7.5 7.5"></path>
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="m4.5 12.75 7.5-7.5 7.5 7.5"></path>
+  </svg>
 </button>
 
-
 <script>
-const backToTopButton = document.getElementById('back-to-top');
+  const backToTopButton = document.getElementById("back-to-top");
 
-let previousScrollY = 0; // 初始化捲動位置
+  let previousScrollY = 0; // 初始化捲動位置
 
-function toggleBackToTopButton() {
-  //檢查backToTopButton是否為空值
-  if (backToTopButton) {
-    const currentScrollY = window.scrollY;
-    const isScrollingDown = currentScrollY > previousScrollY; // 判斷是否向下滾動
-    if (window.scrollY > 400 && isScrollingDown) {
-      backToTopButton.classList.remove('opacity-0', 'invisible');
-      backToTopButton.classList.add('opacity-100', 'visible');
-    } else {
-      backToTopButton.classList.add('opacity-0', 'invisible');
-      backToTopButton.classList.remove('opacity-100', 'visible');
+  function toggleBackToTopButton() {
+    //檢查backToTopButton是否為空值
+    if (backToTopButton) {
+      const currentScrollY = window.scrollY;
+      const isScrollingDown = currentScrollY > previousScrollY; // 判斷是否向下滾動
+      if (window.scrollY > 400 && isScrollingDown) {
+        backToTopButton.classList.remove("opacity-0", "invisible");
+        backToTopButton.classList.add("opacity-100", "visible");
+      } else {
+        backToTopButton.classList.add("opacity-0", "invisible");
+        backToTopButton.classList.remove("opacity-100", "visible");
+      }
+      previousScrollY = currentScrollY; // 更新上一次的滾動位置
     }
-    previousScrollY = currentScrollY; // 更新上一次的滾動位置
   }
-}
 
-function scrollToTop() {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-}
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
 
-window.addEventListener('scroll', toggleBackToTopButton);
-if(backToTopButton){
-    backToTopButton.addEventListener('click', scrollToTop);
-}
-
+  window.addEventListener("scroll", toggleBackToTopButton);
+  if (backToTopButton) {
+    backToTopButton.addEventListener("click", scrollToTop);
+  }
 </script>

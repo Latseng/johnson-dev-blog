@@ -1,101 +1,105 @@
 ---
 import MobileMenuButton from "./MobileMenuButton.astro";
-import ThemeToggle from "./ThemeToggle.astro"
+import MobileSidebar from "./MobileSidebar.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 import { LINKS } from "@consts";
 ---
-<header id="topbar" class="w-full fixed bg-transparent z-50 top-0 h-16 px-4 md:px-8">
-	<nav class="h-full flex justify-between items-center">
-      <a href="/" class="flex items-center mx-2 md:mx-0">
-        <img class="w-4 md:w-6" src="/my-logo.png" alt="my-logo">
-        <span class="mx-2 text-lg md:text-xl">
-          Tactical Coder
-        </span>
-      </a>
 
-		<!-- Desktop Navigation -->
-		<ul class="hidden text-base h-full md:w-1/3 md:flex md:justify-between md:items-center">
-      {LINKS.map((LINK) => (
-        <li class="link-list relative group">
-          <a href={LINK.HREF} data-path={LINK.HREF} class="nav-link py-1 px-4 rounded-xl transition-all font-semibold">{LINK.TEXT}</a>
-          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-black dark:bg-white transition-all duration-300 group-hover:w-full" />
-        </li>
-      ))}
-		</ul>
-		<div class="flex gap-4 items-center">
+<header
+  id="topbar"
+  class="w-full fixed bg-transparent z-50 top-0 h-16 px-4 md:px-8"
+>
+  <nav class="h-full flex justify-between items-center">
+    <a href="/" class="flex items-center mx-2 md:mx-0">
+      <img class="w-4 md:w-6" src="/my-logo.png" alt="my-logo" />
+      <span class="mx-2 text-lg md:text-xl"> Tactical Coder </span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <ul
+      class="hidden text-base h-full md:w-1/3 md:flex md:justify-between md:items-center"
+    >
+      {
+        LINKS.map((LINK) => (
+          <li class="link-list relative group">
+            <a
+              href={LINK.HREF}
+              data-path={LINK.HREF}
+              class="nav-link py-1 px-4 rounded-xl transition-all font-semibold"
+            >
+              {LINK.TEXT}
+            </a>
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-black dark:bg-white transition-all duration-300 group-hover:w-full" />
+          </li>
+        ))
+      }
+    </ul>
+    <div class="flex gap-4 items-center">
       <ThemeToggle />
-      <a href="https://github.com/Latseng" target="_blank" class="hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 p-2 rounded-full hidden md:block">
-				<svg viewBox="0 0 16 16" aria-hidden="true" width="24" height="24"
-					><path
-						fill="currentColor"
-						d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-					></path></svg
-				>
-			</a>
+      <a
+        href="https://github.com/Latseng"
+        target="_blank"
+        class="hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 p-2 rounded-full hidden md:block"
+      >
+        <svg viewBox="0 0 16 16" aria-hidden="true" width="24" height="24"
+          ><path
+            fill="currentColor"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+          ></path></svg
+        >
+      </a>
       <MobileMenuButton />
-		</div>
-	</nav>
+    </div>
+  </nav>
 </header>
 
-<!-- Mobile Sidebar -->
-			<div id="sidebar" class="fixed top-16 right-2 z-50 backdrop-blur-md border  bg-white rounded-lg dark:bg-black hidden shadow-xl">
-        <nav class="flex flex-col p-4 gap-4">
-          {LINKS.map((LINK) => (
-          <a href={LINK.HREF} data-path={LINK.HREF} class="mx-auto p-4 text-sm font-semibold hover:text-sky-500">{LINK.TEXT}</a>
-        ))}
-        <a class="mx-auto hover:text-sky-500" href="https://github.com/Latseng" target="_blank">
-				<svg viewBox="0 0 16 16" aria-hidden="true" width="24" height="24"
-					><path
-						fill="currentColor"
-						d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-					></path></svg
-				>
-			</a>
-        </nav>
-			</div>
+<MobileSidebar />
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-		const linkList = document.querySelectorAll('.link-list')
+  document.addEventListener("DOMContentLoaded", () => {
+    const linkList = document.querySelectorAll(".link-list");
     const currentPath = window.location.pathname;
 
-		// Highlight當前路由導航標籤
-		function toggleHighlight(link: HTMLElement, isActive: boolean) {
-    if (isActive) {
-      link.classList.add('w-full');
-      link.classList.remove('w-0');
-    } else {
-      link.classList.add('w-0');
-      link.classList.remove('w-full');
+    // Highlight當前路由導航標籤
+    function toggleHighlight(link: HTMLElement, isActive: boolean) {
+      if (isActive) {
+        link.classList.add("w-full");
+        link.classList.remove("w-0");
+      } else {
+        link.classList.add("w-0");
+        link.classList.remove("w-full");
+      }
     }
-  }
 
-	linkList.forEach((link) => {
-    const navLink = link.querySelector('a') as HTMLElement
-    const linkPath = navLink.dataset.path || ""
-    const isActive = linkPath === '/' ? currentPath === '/' : currentPath.startsWith(linkPath);
-    const linkHighlight = link.querySelector('span') as HTMLElement
-    toggleHighlight(linkHighlight, isActive);
-  });
-
+    linkList.forEach((link) => {
+      const navLink = link.querySelector("a") as HTMLElement;
+      const linkPath = navLink.dataset.path || "";
+      const isActive =
+        linkPath === "/"
+          ? currentPath === "/"
+          : currentPath.startsWith(linkPath);
+      const linkHighlight = link.querySelector("span") as HTMLElement;
+      toggleHighlight(linkHighlight, isActive);
+    });
   });
 
   //捲動畫面控制Header樣式
   function headerOnScroll() {
-  const topbar = document.getElementById("topbar")
-  if (topbar) { 
-  if (window.scrollY > 0) {
-    topbar.classList.add("backdrop-blur-lg");
-    topbar.classList.add("border-b");
-    topbar.classList.add("dark:border-gray-500");
-    topbar.classList.add("shadow-md");
-  } else {
-    topbar.classList.remove("backdrop-blur-lg")
-    topbar.classList.remove("border-b");
-    topbar.classList.remove("darK:border-gray-500");
-    topbar.classList.remove("shadow-md");
+    const topbar = document.getElementById("topbar");
+    if (topbar) {
+      if (window.scrollY > 0) {
+        topbar.classList.add("backdrop-blur-lg");
+        topbar.classList.add("border-b");
+        topbar.classList.add("dark:border-gray-500");
+        topbar.classList.add("shadow-md");
+      } else {
+        topbar.classList.remove("backdrop-blur-lg");
+        topbar.classList.remove("border-b");
+        topbar.classList.remove("darK:border-gray-500");
+        topbar.classList.remove("shadow-md");
+      }
+    }
   }
-}
-}
 
-document.addEventListener("scroll", headerOnScroll)
+  document.addEventListener("scroll", headerOnScroll);
 </script>

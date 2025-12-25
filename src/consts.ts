@@ -10,7 +10,7 @@ export const SITE: Site = {
 // Posts Page
 export const POSTS: Page = {
   TITLE: "文章",
-  DESCRIPTION: "技術文以及心得雜感分享",
+  DESCRIPTION: "工作、閱讀、雜感以及半路出家寫 Code 後的所見所聞",
 };
 
 // Search Page
