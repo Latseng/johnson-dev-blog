@@ -1,0 +1,240 @@
+---
+title: "Docker 是什麼？程式開發一定要認識這隻大鯨魚！"
+author: 江森
+description: "但它在我的電腦可以跑啊？"
+pubDate: 2025-12-24
+image:
+  url: "get-started-with-docker_fcop68"
+  alt: "cover picture"
+tags: ["Docker"]
+draft: false
+---
+import { CldImage } from 'astro-cloudinary';
+
+## 前言
+
+身為程式開發者，你一定聽過這個著名的迷因：but it works on my machine？（它在我的電腦可以跑啊？）
+
+環境設定一直是個可大可小的議題。
+
+說它可小，是因為在新手時期，在寫程式前光是環境設定就會勸退一堆入坑的新手。你還沒搞定安裝還有依賴的套件，你連 Hello World！都生不出來！
+
+說它可大，是因為即便是有經驗的開發者，你開發過無數款 App 。
+
+醜媳婦最後還是要見公婆，專案吿一段落得面對「在客戶的機器上還能順利無礙地運行它嗎？」這道魔王級問題。
+
+無論你程式寫得再好，不能跑，或是跑起來問題一堆，沒人在乎你專案裡的程式碼結構有多完美，或是可維護性、可擴充性有多棒。
+
+不能運行：就・是・沒・用・的・東・西~~垃圾~~！
+
+Docker 的出現就讓這個著名迷因：：but it works on my machine，不再成為你今天下班前的噩夢！
+
+它就是為了解決這個問題而生！只要你的電腦可以安裝 Docker ，接下來的環境問題就可以交給它處理。~~所以你還得先搞定能不能安裝 Docker~~
+
+## 認識 Docker
+
+所以 Docker 是什麼呢？
+
+這隻大鯨魚（Docker 的 Logo）是我們開發者的好朋友（誰不喜歡鯨魚這種美麗的動物呢？），它一種實現容器化用的工具。
+
+容器化，是虛擬化技術的衍生，它會將應用程式與其依賴項、函式庫、配置文件、運行環境都打包到一個獨立的地方（容器）。
+
+在容器內，應用程式可以獨立運行。
+
+我相信這樣解釋完，一堆人還是一頭霧水，你可以想成，有了Docker，我的專案不會發生「明明在我的電腦就可以跑，到其他電腦就不行」這種情況。
+
+因為Docker把「應用程式可以跑的環境」都打包進去了，只有別的電腦有安裝Docker，就能用容器化技術無縫運行你的專案。
+
+虛擬機器的精簡版：虛擬機器你可以想像成作業系統內還有另外一個作業系統，原本作業系統可以做的事情，例如多工執行應用程式，在虛擬機器內也能做。這麼做的好處在於，在原本的作業系統中，創造一個獨立的環境，你可以在裡面開發、測試軟體，而不會影響到原本的作業系統。
+
+而容器是精簡版的虛擬機器，因為原則上只放一種應用程式，避免多個應用程式在同一個環境內發生衝突。
+
+### 容器化技術
+
+容器具有以下特性：
+#### 一致性
+穩定產生結果才能帶來價值，容器化後的應用程式，執行結果都會穩定一致。
+#### 可攜性
+容器化技術讓應用程式可移植，讓它能夠無痛在不同的環境下執行。不論是Mac OS, Windows或是其他奇形怪狀的電腦，只要能安裝 Docker，都能順利運行 Docker 化的應用程式。
+
+就像先前提到的：but it works on my machine？（但它在我的電腦可以跑啊？）將不再是問題。
+#### 隔離性
+容器把應用程式與其依賴相關的檔案，全部封裝在獨立的環境內（Container），不會與電腦內的其他檔案發生衝突。
+
+簡單來說，在容器內你可以盡情實驗，裡面東西不會毀掉你的電腦～
+
+搞砸了只要刪除容器就好，什麼事都沒發生過！
+
+## 怎麼使用 Docker？
+
+### 安裝
+
+在使用 Docker 前，我需要先安裝 Docker Desktop（桌面版）。
+可以到 [Docker 的官網](https://www.docker.com/)，進入下載頁面後依照指示下載：
+
+<CldImage
+  src="docker-install_jvml7u" 
+  alt="Docker 官網安裝頁面"
+  width={720}
+/>
+
+安裝完成後開啟 Docker Desktop，可以看到以下畫面：
+
+<CldImage
+  src="docker-desktop_wvemtr" 
+  alt="Docker 桌面版截圖"
+  width={720}
+/>
+
+其中編號 1 的功能列區塊可以讓你選擇工作區，編號 2 則顯示目前的工作區。
+
+開啟桌面版後預設會先來到 Containers 這個區塊，可以看到我的畫面中有兩個停止狀態的 Container。
+
+如果你是初次使用，這個區塊應該會是空的。或是你可以點擊上編號 2 區塊的上方有個 "Only show running containers"來隱藏停止運行的 Container。
+
+### 術語解釋
+
+在安裝的過程中出現了一些專有名詞，我想你應該會看了一頭霧水，所以我們來看一下需要特別了解的部分：
+
+####  Image (映像檔) —— 靜態範本
+
+Image 是 Container 的基石。它是一個定義了包含執行應用程式所需環境的唯讀文件。
+
+- **特性：** 不可變性（Immutable）。你不能直接修改 Image，只能透過 Dockerfile（接下來在示範運用時會介紹） 重新構建。
+
+- **層級結構：** Image 是由一層層的 Layer 疊加而成的，這讓儲存與下載變得非常有效率。
+#### Container (容器) —— 動態的執行體
+
+Container 是 Image 的執行實例。當你運行一個 Image，它就會在電腦記憶體中變成一個隔離的進程（process）。
+
+- **特性：** 輕量、隔離、可丟棄。
+
+- **生命週期：** 容器可以被開啟、停止、刪除。要注意的是，預設情況下，存放在容器內的數據會在容器刪除時一起消失。
+#### Volume (儲存卷) —— 持久化的數據
+
+因為容器是「過客」，所以我們需要 Volume 來存放需要長久保存的資料（例如資料庫文件、用戶上傳的照片）。
+
+- 特性： 獨立於容器的生命週期。即使你把容器砍掉，Volume 內的資料依然完好如初。
+
+- 共享性： 多個容器可以同時掛載同一個 Volume 來達成數據共享。
+
+雖然解釋了以上三者，但感覺有解釋跟沒解釋一樣，還是很抽象，我們該如何理解它們之間的關係呢？也許可以用「蓋房子」作為比喻，我們可以把這三者的關係想像成：
+
+- Image 是藍圖。它定義了房屋設計，像是牆壁、室內隔間與管線的走向。圖紙本身不能住人，但它決定了房子該怎麼蓋，蓋好後會是什麼模樣。
+
+- Container 是實體房屋，根據藍圖蓋出來的房子。你可以真的住進去（執行程式）、開燈（使用功能）。你甚至可以拆掉這間房子，再照著藍圖蓋一間一模一樣的。
+
+- Volume 則是房屋外的獨立倉庫，當房子需要拆除重建時，你的家當、居家用品（資料）可以先存放在外部的倉庫裡，等新房子蓋好後直接回倉庫取回即可。
+
+在 Docker 世界裡，Container 的設計哲學是「隨時可以被炸掉」。
+
+Image 就是當有需要時，我們賴以重建的藍圖。
+
+而重要資料不應該存放在 Container 內部，所有重要資料都應該進 Volume 或外部服務。
+
+<CldImage
+  src="mess-up-docker_ydbjbh" 
+  alt="Docker 官網安裝頁面"
+  width={720}
+/>
+
+### 專案示範
+
+接下來會用一個簡單的 FastAPI 專案來示範怎麼建立與運用 Docker。如何開始一個 FastAPI 專案可以參閱[之前的介紹](https://johnsontac.com/posts/python-rabbit-hole-fastapi/)。
+
+在專案中，啟用 Docker 會需要先建立一個 Dockerfile。Dockerfile 是一個純文字檔案，它會定義這個專案的 Image（映像檔），也就是告訴 Docker，該如何將這個專案 Dockerize（容器化）。
+#### Dockerfile
+
+Dockerfile 的內容就像一連串的指令，執行後，Docker 會根據內容自動建立一個映像檔 (Image)。
+
+我們前面有提到，Image（映像檔）就像是所有環境與程式碼的「藍圖」或「食譜」。
+
+Dockerfile 建置完成後，我們的專案也就準備好容器化。
+
+在專案的根目錄新增一個名為：Dockerfile 的檔案（名稱開頭為大寫沒錯，且沒有副檔名），並在裡面加入以下內容：
+```docker
+FROM python:3.13-slim
+
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
+WORKDIR /app
+
+COPY pyproject.toml uv.lock ./
+
+RUN uv sync --frozen --no-cache
+
+COPY . .
+
+CMD ["uv", "run", "fastapi", "run", "main.py", "--port", "80", "--host", "0.0.0.0"]
+```
+第一次看到的人可能會覺得：這什麼鬼？
+
+別緊張，檔案內容的詳解如下：
+
+`FROM python:3.13-slim`：指定專案運行所需的基本環境。
+
+通常會使用官方 Image 作為基底。
+
+你可以到 [Docker Hub](https://hub.docker.com/) 瀏覽已經上傳到雲端的許多 Image，而 Python 的官方 Image 可以參閱這個連結：(https://hub.docker.com/_/python) 。版本號後面的 slim 就是精簡版的意思，排除許多不必要的套件，以減少 Image 的大小。
+
+`COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/`：從 `uv` 的官方 Image 中，把 `uv` 這個工具抓下來，放到容器內的 `/bin/` 目錄。由於這個專案是使用 `uv` 進行管理，所以必須先安裝它。
+
+`WORKDIR /app`：設置容器內的工作目錄為：/app，當然你可以取你要的名稱，而使用：/app 是一種非強制的慣例。
+
+`COPY pyproject.toml uv.lock ./`：複製專案內的 `pyproject.toml`（設定檔）和 `uv.lock`（鎖定套件版本的檔案）到容器的 `/app` 目錄內。
+
+`RUN uv sync --frozen --no-cache`：`uv` 準備好了，專案的依賴清單也複製進去容器了，所以接下來就是安裝清單內所有的 Python 函式庫。其中的參數：`--frozen` 確保安裝的版本跟 lock 檔一模一樣；`--no-cache` 是為了讓容器變小，安裝完就刪掉暫存檔。
+
+`COPY . .`：這邊很容易看錯，注意是「點空白點」！意思是將專案的所有檔案複製進去容器內，也就是開發的部分（包含 `main.py` 等）。
+
+`CMD ["uv", "run", "fastapi", "run", "main.py", "--host", "0.0.0.0", "--port", "8000"]`：這段應該很清楚，就是運行這個專案的指令。
+
+#### 建立 Image
+完成了 Dockerfile 接下來就要來建立容器的藍圖：Image。
+
+執行以下指令（記得要先啟動 Docker）：
+```shell
+docker build -t my-fastapi-app .
+```
+指令解析：
+- `docker build`：建立 Image 的指令。
+- `-t my-fastapi-app`：`t` 代表 Tag（標籤），為這了 Image 取個名字，方便之後查找。
+- **`.`**：「當前目錄」，告訴 Docker 到這裡找剛剛寫好的 Dockerfile。
+
+成功後，輸入指令：`docker images` 你就會看到剛剛建立的 Image 出現在列表之中，你容器藍圖已經準備就緒，接下來就是根據藍圖來建構與運行容器。
+
+使用指令：
+```shell
+docker run -p 8000:8000 --name my-fastapi-app my-fastapi-app
+```
+指令解析：
+
+- `docker run`：啟動容器。
+- `-p 8000:8000`：連接埠對應 (Port Mapping)。冒號左邊 `8000` 是你電腦（主機）的埠號。冒號右邊 `8000` 是 Dockerfile 設定容器內部的埠號。 這句的意思是：「當我存取電腦的 8000 埠時，請轉發給容器的 8000 埠」。
+- `--name my-fastapi-app`：指定 Container 的名稱。這裡有個小趣事，如果你沒有為 Container 命名，Docker 會以內建的清單組合，隨機幫你指定名稱，指定方式為：形容詞_名人。如果你想看看 Docker 會如何命名你的 Container，你可以嘗試拿掉看看。
+- `my-fastapi-app`：告訴 Docker 要執行哪一個 Image。
+
+如果有運行成功，你就能在瀏覽器輸入：http://localhost:8000，查看在 Container 中運行的 FastAPI 的狀態，或是打開 Docker Desktop 查看你的 Container 與容器。
+
+如果要關閉容器，可以直接使用 Docker Desktop 操作，或是使用指令：
+```shell
+docker ps -a
+```
+查看運行中的 Container ID，在輸入：
+```shell
+docker stop container_id
+```
+停止指定的 Container。
+## 常用 Docker 指令
+
+雖然我們有了 Docker Desktop 圖形化介面，但在操作上還是沒有指令來得全面，所以不免俗還是要了解一下 Docker 相關的指令操作。除了上述建立與運行 Container 的指令外，筆者在下方羅列了其他常用的 Docker 指令：
+
+- docker info：顯示 Docker 資訊
+- docker version：顯示 Docker 版本
+- docker pull image_id：從 Docker Hub 下載 Image
+- docker images：查看本機已建立的 Image
+- docker ps：查看運行中的 Container
+- docker ps -a：查看所有 Container
+- docker stop container_id：停止指定 Container
+- docker rm container_id：刪除指定 Container
+- docker rmi image_id：刪除指定 Image
