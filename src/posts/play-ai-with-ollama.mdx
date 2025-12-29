@@ -1,0 +1,281 @@
+---
+title: "如何在本地運行 LLM（大型語言模型）？"
+author: 江森
+description: "Ollama 與 Open WebUI 快速上手"
+pubDate: 2025-12-29
+image:
+  url: "ollama-gemini_raxhjt"
+  alt: "cover picture"
+tags: ["Docker"]
+draft: false
+---
+import { CldImage } from 'astro-cloudinary';
+
+## 前言
+
+在這個 AI 已然深入人們生活的世道，現代人一天不開個 AI，問個幾個疑難雜症，好像就難以展開一天的生活。這倒有點像古早的時候，人們依賴廟裡或是村落中最德高望重的長者解惑那樣。
+
+我想很多人對 OpenAI 的 ChatGPT 引爆的AI 熱潮記憶猶新，因為也不過是三年多前的事，一直到近期的 Gemini 3 ，大廠間的技術戰爭越來越白熱化，新技術的升級與應用也不斷在刷新人們的認知，而且更迭的速度越來越快（連「爆炸」這類形容更新速度的詞都用爛了）
+
+看到以前的許多科幻片的情節逐漸成真，這些飛躍性的升級也不斷變成新的日常，同時，我們這些凡人也暗自祈禱不要被這些大廠的神仙級對戰掃到，把我們的飯碗也跟著消滅。
+
+感覺這個狂潮的開始，好像是沒多久之前的事，但其實 AI 的這個詞可以追溯到 1955 年（當年出生的人都70歲了）的達特茅斯夏季人工智慧研究計劃（Dartmouth Summer Research Project on Artificial Intelligence），也被稱為達特茅斯會議。
+
+人工智慧（Artificial Intelligence）這個我們最近一直被轟炸的詞，就是在那個時候首次被提出。雖然 AI 的概念很古早就有了，但這期間一直受限於技術，直到 ChatGPT 出現才開啟了「大 AI 時代」（就是一個人們聊天三句不離 AI 的時代）。
+
+雖然提了一點歷史小知識，但這一回沒有要來深究 AI 的發展史，而是想來談談讓引爆 AI 狂潮的大型語言模型（Large Language model，以下簡稱 LLM）。
+
+人工智慧（AI）是一個極其龐大的學科，LLM 只是其中的「冰山一角」。
+
+之所以感覺 LLM 成了 AI 的代名詞，主要是因為它在「通用性」和「人機互動」上取得了突破性的進展，這讓一般大眾非常「有感」（連你阿嬷都會），所以成為近期的風口浪尖。
+
+我們在各大入口（Gemini、ChatGPT、Claude 等各類讓你問事的窗口）使用的 AI 都是基於 LLM 的技術。
+
+雖然從各大入口進入使用 AI，已經是很普遍的事了，但你知道我們也可以在本地（自己的電腦）上運行自己的 LLM 嗎？
+
+扯了那麼多，終於要來談本回的主角 Ollama 了。
+
+## Ollama 是什麼？
+
+<CldImage
+  src="ollama-logo_gxvjpn" 
+  alt="Ollama Logo"
+  width={560}
+/>
+
+[Ollama](https://github.com/ollama/ollama) 是一個開源的 LLM 運行框架。它並不是 LLM 本體，而是一款讓你容易管理 LLM 的工具。
+
+Ollama 讓你不用煩惱 LLM 的底層編譯問題、記憶體管理、格式轉換等技術細節，只要安裝好 Ollama 就能簡單地在你自己的電腦運行 LLM。
+
+LLM 是種相當吃效能的程式，配備越好的電腦，尤其配備一定等級以上的 GPU，跑起來越舒服。
+
+既然自己的電腦跑 LLM 需要花成本，而各平台的入口使用 AI 非常便利，那為什麼非要在本地運行 LLM 呢？你可能會有以下需要：
+
+- 資安與隱私：各平台雖然有免費或付費的 AI 可以用，但你跟 AI 的互動資料都可能會上傳到雲端，或者有些公司的機密資料，不容許任何外洩的可能，而且有財力可以建置設備，運行自己 LLM 。
+- 研究與開發：如題，你需要在電腦上進行 LLM 的開發與研究。
+- 好玩：如題，你可能是技術型玩家。
+
+雖然運行 LLM 需要相當的效能，但也能透過 Ollama 設定，使用 CPU 運行，以及使用較為精簡的模型來降低效能的開支等方式，讓你用經濟實惠的方式運行本地 LLM。
+
+而且 Ollama 具有以下特色，讓剛接觸的開發者也能很快地上手：
+1. 易用：套過 CLI 指令就能下載與運行模型，也能利用 REST API 的方式進行模型的應用開發。
+2. 模型支援與擴展性：內建 Llama 2、Mistal、Falcon、Phi-3、DeepSeek等開源模型。也能透過 Hugging Face 下載其他 LLM。
+3. 適合本地環境：使用 llama.cpp 最佳化，並提供 GPU 加速選項。透過 GGUF 量化減少模型大小，提高推理速度，讓低資源設備能夠運行模型。
+4. 入門容易：Ollama不但官方文件詳盡、清楚，它在開發者社群間也相當熱門，GitHub 上的貢獻與更新頻繁，在網路上可以找到相當多的教學資源與疑難解答，這讓入門的門檻降低許多。
+
+### 安裝 Ollama
+
+可以透過 Docker 來安裝 Ollama，避免環境的相依性與衝突問題（如果出問題也能一鍵刪除），也不用擔心配置，只需要使用 Dokcer 指令就能啟動。
+
+首先需要安裝 Docker。
+
+不知道 Docker 是什麼，可以看一下先前的[這篇](https://johnsontac.com/posts/get-started-with-docker-fastapi/)。
+
+可以使用以下指令確認安裝：
+
+```shell
+docker --version
+```
+#### 下載 Ollama Docker Image
+Ollama 官方在Docker Hub 提供了 Image（映像檔），可以使用指令下載：
+
+```shell
+docker pull ollama/ollama
+```
+#### 啟動 Ollama Container
+
+如果你有老黃旗下的GPU，可以透過以下指令來啟用 GPU 加速：
+```shell
+docker run -d --gpus=all -v ollama:/root/.ollama -p 11434:11434 --name ollama
+```
+
+如果沒有，則拿掉 --gpus=all 參數，以 CPU 運行：
+```shell
+docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+```
+
+指令說明：
+- docker run -d：在背景模式 (Detached mode) 執行容器。
+- -v ollama:/root/.ollama：掛載 Volume。它能確保你下載的模型儲存在主機硬碟，容器重啟或刪除時模型不會消失。
+- -p 11434:11434：埠號映射。將主機的 11434 埠對應到容器內，讓你能在主機存取 API。
+- --name ollama：為這個容器命名為 `ollama`，方便日後管理（停止、重啟）。
+- ollama/ollama：官方映像檔的名稱。
+
+你可以使用瀏覽器進入：http://localhost:11434 測試。如果有啟用成功，你應該會在頁面上看到：Ollama is running
+
+運行後，如果你想關閉它，這裡一併附上停止運行的指令（或是在 Docker Desktop 的介面中點擊停止按鈕）：
+```
+docker stop ollama
+```
+#### 下載與測試模型
+
+運行 Ollama 後，就可以來下載模型來玩玩看，你可以在 Ollama 的[官網](https://ollama.com/search)瀏覽官方提供的 Model。
+
+為了盡可能讓每一台電腦都能適用，這邊就選用對資源要求不高的模型：
+```shell
+docker exec -it ollama ollama pull llama3.2:3b
+```
+以上指令會將 llama 模型下載的你的電腦內。
+
+接下來運行的指令為：
+```shell
+docker exec -it ollama ollama run llama3.2:3b
+```
+運行指令會先檢查你的電腦裡是否有該模型，有的話就運行它，沒有的話則會觸發自動下載，等於先執行上一個 "pull" 的動作，才來運行。
+
+所以你若是對指令很熟悉的話，可以直接用第二組指令。
+
+運行 LLM 之後，終端機會進入互動模式，你就可以開始輸入要給 LLM 的 prompt 來測試囉～
+
+### Hugging Face
+
+Ollama 官方雖然有也模型庫可供選擇，但說到開源模型的最大集散地，不得不提到 Hugging Face。
+
+[Hugging Face](https://huggingface.co/models?library=gguf&sort=trending) 是一個開 AI 社群平台，被譽為「AI 界的 GitHub」，提供大量的預訓練模型、資料集和開發工具，讓開發者能輕鬆存取、分享和使用 AI 技術。
+
+尤其在自然語言處理 (NLP) 領域極為流行，也涵蓋語音、電腦視覺等，旨在促進 AI 技術的普及和應用，降低開發門檻。
+
+ 在2024年宣布支援直接從 Hugging Face 下載模型（GGUF格式）。
+
+你可以透過以下指令下載：
+
+```shell
+ollama run hf.co/使用者名稱/模型名稱--GGUF
+```
+## 圖形化介面
+
+我們先前都是以指令，來操作 Ollama，像是："docker exec -it ollama ollama run"。
+
+這個指令是從 Docker 的容器外部發出指令，所以會以 docker 開頭。
+
+如果不想透過外層主機對 Docker 容器下指令的方式，或是你想進行更細部的管理與即時除錯，我們可以先進入容器的內部環境後，再進行操作，就像這樣：
+
+```shell
+docker exec -it ollama /bin/ bash
+```
+指令解析：
+
+- docker exec：告訴 Docker，你要在一個已經啟動的容器中執行（execute）一個新的命令：-it。
+- -it：是兩個參數的縮寫。-i (interactive)，保持標準輸入開啟，讓你能輸入文字。-t (tty)：配置一個虛擬終端機，讓介面看起來像一般的終端機。
+- ollama：這是容器的名稱。這代表你想要進入那個執行 Ollama AI 模型的容器。
+- /bin/bash：這是你進入容器後要執行的第一個程式。這裡指定執行 Bash Shell，也就是讓你獲得一個可以輸入指令的命令行介面。
+
+上一個指令帶我們進入 ollama 的 docker container （容器），接著就能直接執行 ollama 指令，例如我們剛剛提到的：
+```shell
+ollama run hf.co/bartowski/DeepSeek-R1-Distill-Qwen-7B-GGUF
+```
+雖然在 Shell 環境進行操作對開發者來說是家常便飯，但有時候要是有 GUI ，在操作上會更加友善與直覺，就不用一直分心到與主要開發無關的指令上。
+
+所以接下來要介紹的 Open WebUI 可以讓你像操作手機 App 一樣，輕鬆直覺地使用與管理 LLM。
+
+### Open Web UI
+#### 什麼是 Open WebUI？
+
+[Open WebUI](https://github.com/open-webui/open-webui)是一個開源的**網頁圖形界面**。它能讓使用者能透過瀏覽器，以最直觀的方式操作各種本地運行的 AI 模型。
+
+- 直覺話：就像在使用 ChatGPT 般的圖形化操作介面。
+
+- 多元功能：支援檔案上傳（RAG 知識庫）、多用戶管理、語音輸入、影像生成整合、自訂模型角色等。
+
+- 隱私安全：跟 Ollama 相同，它可以完全離線運作，資料不會上傳到雲端。
+
+#### 安裝
+在終端機執行以下指令：
+```shell
+docker pull ghcr.io/open-webui/open-webui:main
+```
+#### 運行
+首先是客家版（跟筆者一樣持家）的執行方式，不依賴 GPU，使用 CPU 運行的指令為：
+```shell
+docker run -d -p 3000:8080 -v open-webui:/app/backend/data --name open-webui ghcr.io/open-webui/open-webui:main
+```
+
+或是你有老黃加持，可以使用以下尊榮版指令：
+```shell
+docker run -d -p 3000:8080 --gpus=all -v open-webui:/app/backend/data --name open-webui ghcr.io/open-webui/open-webui:main
+```
+
+指令解析：
+- `docker run`：告訴 Docker 建立並啟動一個新的容器。`-d` (Detached)背景執行。容器啟動後會直接回到終端機提示字元，不會佔用目前的視窗。
+- `-p 3000:8080`埠號映射 (Port Mapping)。將主機的 `3000` 埠連接到容器內部的 `8080` 埠。
+- `-v open-webui:/app/backend/data`掛載 Volume。將名為 `open-webui` 的資料存儲區掛載到容器內，確保你的聊天紀錄和設定在容器重啟後不會消失。
+- `--name open-webui`為這個容器取名叫 `open-webui`，方便日後管理（如停止或啟動）
+- `ghcr.io/open-webui/open-webui:main`指定要下載並運行的 映像檔 (Image)來源與版本。
+
+`--gpus=all`這個參數讓你可以開啟 GPU 加速。
+以上兩個運行指令，如果你希望開啟 Docker 後自動運行，可以加上`--restart always`這個參數。
+
+運行成功後，可在瀏覽器輸入：http://localhost:3000 來到 Open WebUI 的首頁。
+首次使用 Open WebUI 會請你建立一組管理者帳號。
+
+同樣地，如果在運行後你想關閉它，指令為（也可以使用 Docker Desktop 來停止它）：
+
+```shell
+docker stop open-webui
+```
+#### 連接 Ollama
+
+由於Open WebUI是讓你可以看與操作的介面，我們必須讓它接上 LLM 的控制中心，也就是我們先前安裝好的 Ollama。
+
+使用你設定好的管理者帳號登入 Open WebUI。
+
+<CldImage
+  src="open-webui-admin_hfqbjs" 
+  alt="Open WebUI 管理者面板頁面"
+  width={720}
+/>
+
+接著點擊頁面的右上角或左下角的使用者圖示，會跳出選單，點擊 Admin Panel 管理者面板。（由於筆者習慣英文介面了，如果你想變更語言可以在這個步驟點選 Setting 就可以找到語言與外觀的相關設定）
+
+<CldImage
+  src="open-webui-admin-setting_gjsel3" 
+  alt="Open WebUI 管理者面板頁面"
+  width={720}
+/>
+
+在 Admin Panel 管理者面板頁面上方，點擊 Setting 設定，進入設定分頁。
+
+<CldImage
+  src="open-webui-connect_m6s81t" 
+  alt="Open WebUI 管理者面板，連結頁面"
+  width={720}
+/>
+
+接著在左側的 Connections 連線的選單中，確認你的 Ollama API 連線有啟用，並確定連線位置為：`http://host.docker.internal:11434`。
+
+它會指向在你的 Docker 中運行的 Ollama。
+
+你也能在這裡設定使用 Open AI 的 API 連接雲端模型。
+
+如果你想在 Open WebUI的介面管理模型，一樣到 Admin Panel -> Setting -> Connections 的頁面中，找到 Ollama API 的那一列，右方有個 Manage 按鈕，開啟後，就能進行下載與刪除模型等管理操作。
+
+<CldImage
+  src="open-webui-ollama_z1gq9t" 
+  alt="Open WebUI 管理者面板頁面"
+  width={720}
+/>
+
+在這裡一併附上在終端機管理 Ollama 內 LLM 的指令：
+
+上面有提過的模型運行指令
+```shell
+docker exec -it ollama ollama run 模型名稱
+```
+離開互動模式：Ctrl + d，或是輸入：/bye
+
+下載模型（可以到 [Ollama 的 Library](https://ollama.com/library) 瀏覽）
+```shell
+docker exec -it ollama ollama pull 模型名稱
+```
+
+瀏覽已下載的模型
+```shell
+docker exec -it ollama ollama list
+```
+
+刪除模型
+```shell
+docker exec -it ollama ollama rm 模型名稱
+```
+
+設定完畢之後，你就能回到 Open WebUI 的首頁，使用類似 ChatGPT的聊天介面，與 LLM 進行問答啦！
