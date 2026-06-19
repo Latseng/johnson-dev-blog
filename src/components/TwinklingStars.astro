@@ -15,7 +15,6 @@
   viewBox="0 0 149 149" 
   fill="none" 
   xmlns="http://www.w3.org/2000/svg"
-  class="absolute left-full animate-twinkle"
 >
   <circle cx="74" cy="74" r="11" fill="white"/>
   <rect y="141.421" width="200" height="10" transform="rotate(-45 0 141.421)" fill="url(#paint0_linear_4_2)"/>
@@ -37,26 +36,41 @@
 </svg>
 
 <script is:inline>
-  // Generate a twinkle star and append it to the galaxy, remove it after animation.
+  // Clear any previous interval (handles re-navigation)
+  if (typeof twinkleInterval !== "undefined") clearInterval(twinkleInterval);
+
   function generateTwinkleStar() {
-    const twinkleStarTemplate = document.getElementById("twinkle-star")
-    if (!twinkleStarTemplate) { return; }
-    // Clone the twinkle star template and set its attributes.
-    const twinkleStar = twinkleStarTemplate.cloneNode(true);
+    var twinkleStarTemplate = document.getElementById("twinkle-star");
+    if (!twinkleStarTemplate) return;
+
+    var twinkleStar = twinkleStarTemplate.cloneNode(true);
+    twinkleStar.removeAttribute("id");
     twinkleStar.style.position = "absolute";
     twinkleStar.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
-    twinkleStar.style.top = Math.floor(Math.random() * (window.innerHeight/3)) + "px";
-    twinkleStar.style.width = window.innerWidth < 768 ? Math.floor(Math.random() * (15 - 7.5 + 1) + 7.5) : Math.floor(Math.random() * (30 - 15 + 1) + 15) + "px";
-    twinkleStar.style.height = twinkleStar.style.width;
+    twinkleStar.style.top = Math.floor(Math.random() * (window.innerHeight / 3)) + "px";
+    var size = (window.innerWidth < 768
+      ? Math.floor(Math.random() * (15 - 7.5 + 1) + 7.5)
+      : Math.floor(Math.random() * (30 - 15 + 1) + 15)) + "px";
+    twinkleStar.style.width = size;
+    twinkleStar.style.height = size;
     twinkleStar.classList.add("twinkle");
-    document.getElementById("galaxy").appendChild(twinkleStar);
 
-    // Remove the twinkle star after the animation is completed.
-    setTimeout(() => {
+    var galaxy = document.getElementById("galaxy");
+    if (galaxy) galaxy.appendChild(twinkleStar);
+
+    setTimeout(function () {
       twinkleStar.remove();
     }, 2500);
   }
 
-  setInterval(generateTwinkleStar, 5000);
+  var twinkleInterval = setInterval(generateTwinkleStar, 5000);
+
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+      clearInterval(twinkleInterval);
+    } else {
+      twinkleInterval = setInterval(generateTwinkleStar, 5000);
+    }
+  });
 </script>
   

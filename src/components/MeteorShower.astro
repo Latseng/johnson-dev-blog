@@ -16,28 +16,39 @@
 </div>
 
 
-<script >
-  function createMeteor () {
-  // create a meteor
-  let meteor = document.createElement("div");
-  meteor.setAttribute("class", "meteor");
-  meteor.style.left = Math.round(Math.random() * window.innerWidth) + "px";
-  meteor.style.top  = Math.round(Math.random() * window.innerHeight) + "px";
-  
-  // append the meteor to a random meteor shower (direction)
-  const showers = document.querySelectorAll(".shower");
-  if (showers.length > 0) {
-    const random = Math.floor(Math.random() * showers.length);
-    const shower = showers[random];
-    shower.append(meteor);
+<script>
+  let meteorInterval: ReturnType<typeof setInterval>;
+
+  function createMeteor() {
+    const meteor = document.createElement("div");
+    meteor.setAttribute("class", "meteor");
+    meteor.style.left = Math.round(Math.random() * window.innerWidth) + "px";
+    meteor.style.top = Math.round(Math.random() * window.innerHeight) + "px";
+
+    const showers = document.querySelectorAll(".shower");
+    if (showers.length > 0) {
+      const random = Math.floor(Math.random() * showers.length);
+      showers[random].append(meteor);
+    }
+
+    setTimeout(() => {
+      meteor.remove();
+    }, 3500);
   }
 
-  // remove the meteor after the animation duration
-  setTimeout(() => {
-    meteor.remove();
-  }, 3500);
-}
+  function startMeteors() {
+    meteorInterval = setInterval(createMeteor, 1000);
+  }
 
-// Create meteors
-setInterval(createMeteor, 1000);
+  function stopMeteors() {
+    clearInterval(meteorInterval);
+  }
+
+  document.addEventListener("visibilitychange", () => {
+    document.hidden ? stopMeteors() : startMeteors();
+  });
+
+  document.addEventListener("astro:before-swap", stopMeteors, { once: true });
+
+  startMeteors();
 </script>

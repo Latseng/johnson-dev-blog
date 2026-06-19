@@ -88,15 +88,9 @@ import { LINKS } from "@consts";
     const topbar = document.getElementById("topbar");
     if (topbar) {
       if (window.scrollY > 0) {
-        topbar.classList.add("backdrop-blur-lg");
-        topbar.classList.add("border-b");
-        topbar.classList.add("dark:border-gray-500");
-        topbar.classList.add("shadow-md");
+        topbar.classList.add("backdrop-blur-lg", "border-b", "dark:border-gray-500", "shadow-md");
       } else {
-        topbar.classList.remove("backdrop-blur-lg");
-        topbar.classList.remove("border-b");
-        topbar.classList.remove("darK:border-gray-500");
-        topbar.classList.remove("shadow-md");
+        topbar.classList.remove("backdrop-blur-lg", "border-b", "dark:border-gray-500", "shadow-md");
       }
     }
   }

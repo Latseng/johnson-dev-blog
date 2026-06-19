@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
 import { CldImage } from "astro-cloudinary";
 const pageTitle = "關於我";
 ---
@@ -14,7 +14,7 @@ const pageTitle = "關於我";
       height={480}
       alt="about me"
     />
-    <hr class="" />
+    <hr />
     <p>我曾在城市中最不為人知的角落，和隊友們共同執行過最危險的工作。</p>
     <p>那些年教會我的Tactical Mindset ，不會只留在我曾走過的高風險現場。</p>
     <p>
@@ -37,7 +37,7 @@ const pageTitle = "關於我";
           d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
         ></path>
       </svg>
-      聯繫我：johnsonin0212@gmail.com
+      聯繫我：<a href="mailto:johnsonin0212@gmail.com">johnsonin0212@gmail.com</a>
     </p>
   </section>
 </BaseLayout>

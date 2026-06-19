@@ -1,22 +1,16 @@
 ---
-import { getCollection } from "astro:content";
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
 import ArchivePanel from "@components/ArchivePanel.astro";
+import { getSortedPosts } from "@utils/content-utils";
 
 export async function getStaticPaths() {
-  
-const allPosts = await getCollection("posts");
-const uniqueTags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
+  const allPosts = await getSortedPosts();
+  const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
 
-  return uniqueTags.map((tag) => {
-  const filteredPosts = allPosts.filter((post: any) => post.data.tags.includes(tag));
-  return {
+  return uniqueTags.map((tag) => ({
     params: { tag },
-    props: { posts: filteredPosts },
-  };
-});
-
-} 
+  }));
+}
 
 const { tag } = Astro.params;
 ---

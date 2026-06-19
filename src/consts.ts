@@ -13,12 +13,6 @@ export const POSTS: Page = {
   DESCRIPTION: "工作、閱讀、雜感以及半路出家寫 Code 後的所見所聞",
 };
 
-// Search Page
-// export const SEARCH: Page = {
-//   TITLE: "搜尋",
-//   DESCRIPTION: "找不到文章嗎？利用關鍵字查詢吧！",
-// };
-
 // Links
 export const LINKS: Links = [
   {
@@ -35,41 +29,15 @@ export const LINKS: Links = [
   },
 ];
 
-export const HERO_WORDS = [
-  { text: "Code", imgPath: "/code.svg" },
-  { text: "Idea", imgPath: "/ideas.svg" },
-  { text: "", imgPath: "/concepts.svg" },
-  { text: "設計", imgPath: "/designs.svg" },
-  { text: "開發", imgPath: "/code.svg" },
-  { text: "想法", imgPath: "/ideas.svg" },
-  { text: "概念", imgPath: "/concepts.svg" },
-  { text: "設計", imgPath: "/designs.svg" },
-];
+// Pagination
+export const POSTS_PER_PAGE = 5;
 
 // Socials
 export const SOCIALS: Socials = [
-  // {
-  //   NAME: "Email",
-  //   ICON: "email",
-  //   TEXT: "markhorn.dev@gmail.com",
-  //   HREF: "mailto:markhorn.dev@gmail.com",
-  // },
   {
     NAME: "Github",
     ICON: "github",
     TEXT: "johnson-dev",
     HREF: "https://github.com/Latseng",
   },
-  // {
-  //   NAME: "LinkedIn",
-  //   ICON: "linkedin",
-  //   TEXT: "markhorn-dev",
-  //   HREF: "https://www.linkedin.com/in/markhorn-dev/",
-  // },
-  // {
-  //   NAME: "Twitter",
-  //   ICON: "twitter-x",
-  //   TEXT: "markhorn_dev",
-  //   HREF: "https://twitter.com/markhorn_dev",
-  // },
 ];

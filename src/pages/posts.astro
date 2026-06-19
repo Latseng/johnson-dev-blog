@@ -1,16 +1,16 @@
 ---
 import TagsCollection from "@components/TagsCollection.astro";
-import BaseLayout from "../layouts/BaseLayout.astro"
+import BaseLayout from "@layouts/BaseLayout.astro";
 import ArchivePanel from "@components/ArchivePanel.astro";
 ---
 
 <BaseLayout pageTitle="文章">
     <section class="mt-20 md:mx-12 md:p-8 p-4">
-      <h2 class="text-xl md:text-2xl font-bold">Tags</h2>
+      <h2 class="text-xl md:text-2xl font-bold">標籤</h2>
       <TagsCollection />
    </section>
     <section class="md:mx-12 md:p-8 p-4">
-      <h2 class="text-xl md:text-2xl font-bold">Archive</h2>
+      <h2 class="text-xl md:text-2xl font-bold">歸檔</h2>
       <ArchivePanel />
     </section>
 </BaseLayout>

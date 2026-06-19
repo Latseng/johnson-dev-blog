@@ -1,20 +1,35 @@
 ---
 import BackToTop from "@components/BackToTop.astro";
-import Header from "../components/Header.astro";
-const { pageTitle } = Astro.props;
-import "../styles/global.css";
+import Header from "@components/Header.astro";
+import "@styles/global.css";
 import { SITE } from "@consts";
 import "katex/dist/katex.min.css";
+
+interface Props {
+  pageTitle: string;
+  description?: string;
+}
+
+const { pageTitle, description = SITE.DESCRIPTION } = Astro.props;
+const pageFullTitle = `${pageTitle} | ${SITE.TITLE}`;
 ---
 
 <html lang="zh-Hant-TW">
   <head>
     <meta charset="utf-8" />
-    <link rel="favicon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={SITE.DESCRIPTION} />
-    <title>{`${pageTitle} | ${SITE.TITLE}`}</title>
+    <meta name="author" content={SITE.AUTHOR} />
+    <meta name="description" content={description} />
+    <title>{pageFullTitle}</title>
+    <link rel="canonical" href={Astro.url.href} />
+    <!-- Open Graph -->
+    <meta property="og:title" content={pageFullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:site_name" content={SITE.TITLE} />
   </head>
   <body class="dark:bg-black dark:text-white/75 text-black/75">
     <Header />

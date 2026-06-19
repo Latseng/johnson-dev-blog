@@ -1,73 +1,24 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import Posts from "@/components/Posts.astro";
-import TwinklingStars from "@/components/TwinklingStars.astro";
-import MeteorShower from "@/components/MeteorShower.astro";
-import HeroText from "@/components/HeroText.astro";
-import Pagination from "@/components/Pagination.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Posts from "@components/Posts.astro";
+import Pagination from "@components/Pagination.astro";
+import HeroBackground from "@components/HeroBackground.astro";
 import { getSortedPosts } from "@utils/content-utils";
+import { POSTS_PER_PAGE } from "@consts";
 
 const pageTitle = "首頁";
 
-const pagination = 5;
-
 const posts = await getSortedPosts();
-
-const totalPages = Math.ceil(posts.length / pagination);
-const currentPosts = posts.slice(0, pagination);
+const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+const currentPosts = posts.slice(0, POSTS_PER_PAGE);
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <!-- Light Mode: Particles -->
-  <div class="absolute inset-0 block dark:hidden">
-    <div id="particles1" class="fixed inset-0"></div>
-    <div id="particles2" class="fixed inset-0"></div>
-    <div id="particles3" class="fixed inset-0"></div>
-  </div>
-
-  <!-- Dark Theme: Stars -->
-  <div class="absolute inset-0 bg-black hidden dark:block">
-    <div id="stars1" class="fixed inset-0"></div>
-    <div id="stars2" class="fixed inset-0"></div>
-    <div id="stars3" class="fixed inset-0"></div>
-  </div>
-
-  <!-- Dark Theme: Twinkling Stars / Metors -->
-  <div id="galaxy" class="fixed inset-0">
-    <div class="hidden dark:block">
-      <TwinklingStars />
-      <MeteorShower />
-    </div>
-  </div>
-
-  <div class="relative h-screen w-full">
-    <HeroText />
-    <div
-      id="planetcont"
-      class="animate absolute inset-0 top-16 md:top-24 overflow-hidden"
-    >
-      <div
-        id="crescent"
-        class="absolute top-0 left-1/2 -translate-x-1/2 w-[250vw] min-h-[100vh] aspect-square rounded-full p-[1px] bg-gradient-to-b from-black/25 dark:from-white/75 from-0% to-transparent to-5%"
-      >
-        <div
-          id="planet"
-          class="w-full h-full bg-white dark:bg-black rounded-full p-[1px] overflow-hidden flex justify-center"
-        >
-          <div
-            id="blur"
-            class="w-full h-20 rounded-full bg-neutral-500/25 dark:bg-white/25 blur-3xl"
-          >
-          </div>
-        </div>
-      </div>
-    </div>
+  <HeroBackground>
     <div class="animate absolute top-12 p-4 sm:p-20 md:p-24 w-full mx-auto">
       <h2 class="text-center text-3xl md:text-4xl my-8 font-bold">最新文章</h2>
       <Posts posts={currentPosts} />
       <Pagination currentPage={1} totalPages={totalPages} />
     </div>
-  </div>
+  </HeroBackground>
 </BaseLayout>
-
-<script src="src/scripts/bg.js"></script>
