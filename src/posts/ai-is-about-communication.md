@@ -1,5 +1,5 @@
 ---
-title: '用好 AI 方法就是好好說話'
+title: '用好 AI 的方法就是好好說話'
 author: 江森
 description: '講清楚、說明白，AI 才會給你想要的'
 pubDate: 2026-05-03
